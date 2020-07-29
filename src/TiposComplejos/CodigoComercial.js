@@ -1,0 +1,34 @@
+// Factura Electronica
+//
+// Copyright © 2020 Emilio Rojas
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+/**
+ * Nombre:        CodigoComercia
+ * Tipo:          String
+ * Tamaño:        2
+ * Descripcion:   Tipo complejo para el código de un producto o servicio. Se puede incluir un máximo de 5 repeticiones de códigos de producto/servicio.
+ */
+class CodigoComercial {
+  /**
+   * Nombre:        Tipo de Código de producto/servicio
+   * Tipo:          String
+   * Tamaño:        2
+   * Descripcion:   Es un campo fijo de dos posiciones
+   *                Ver nota 12
+   */
+  Tipo = '';
+
+  /**
+   * Nombre:        Código
+   * Tipo:          String
+   * Tamaño:        20
+   * Descripcion:   Es un número decimal compuesto por 13 enteros y 3 decimales
+   */
+  Codigo = '';
+}
