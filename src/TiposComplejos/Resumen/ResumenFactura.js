@@ -12,23 +12,7 @@
    * Nombre:        Resumen de la Factura
    * Tipo:          ComplexType
    * Tamaño:
-   * Descripcion:   Códigoy     Tipo     de Moneda
+   * Descripcion:   Tipo complejo que representa el resumen de la factura.
    */
 class ResumenFactura {
-
-  /**
-   * Nombre:        Emisor del comprobante
-   * Tipo:          ComplexType
-   * Tamaño:
-   * Descripcion:   Tipo de dato de fecha y hora, basado en el estándar RFC3339 sección 5.6, tipo “date-time”.Formato: YYYY-MM-DDThh:mi:ss[Z|(+|-)hh:mm]Ejemplo: 2016-09-26T13:00:00+06:00
-   */
-  CodigoTipoMoneda = null;
-
-  /**
-   * Nombre:        Tipo de identificación del emisor
-   * Tipo:          String
-   * Tamaño:        2
-   * Descripcion:   Es un campo fijo de dos posiciones.Este campo será  de condición obligatoria, cuando se posea información en el nodo “Número de cédula física/ jurídica/NITE/DIMEX emisorVer nota 4
-   */
-  Numero = '';
 }

@@ -30,7 +30,7 @@ class LineaDetalle {
    * Tipo:          String
    * Tamaño:        13
    * Descripcion:   Ver nota 17
-   * Footnote:      3 Rige apartir del 01/12/2020; a partir de la fecha indicada anteriormente dicho campo se convierte en “Obligatorio”.
+   * Footnote:      Rige apartir del 01/12/2020; a partir de la fecha indicada anteriormente dicho campo se convierte en “Obligatorio”.
    */
   Codigo = '';
 
@@ -74,7 +74,7 @@ class LineaDetalle {
    *                Es de carácter obligatorio cuando el comprobante incorpore al menos una línea de un producto o servicio.
    *                Debe de detallarse el tipo de producto o servicio que se brinde.
    */
-  Detalle = 0;
+  Detalle = '';
 
   /**
    * Nombre:        Precio unitario

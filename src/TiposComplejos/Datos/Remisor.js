@@ -21,7 +21,7 @@ const Fax = require('TiposComplejos/Fax');
  */
 class Remisor {
   /**
-   * Nombre:        Nombre o razón social del Emisor
+   * Nombre:        Nombre o razón social
    * Tipo:          String
    * Tamaño:        100
    * Descripcion:
@@ -32,12 +32,12 @@ class Remisor {
    * Nombre:
    * Tipo:          ComplexType
    * Tamaño:
-   * Descripcion:   Tipo complejo que contiene los datos de identificación del emisor o receptor
+   * Descripcion:   Tipo complejo que contiene los datos de identificación
    */
-  Identificacion = null;
+  Identificacion = new Identificacion();
 
   /**
-   * Nombre:        Nombre comercial emisor
+   * Nombre:        Nombre comercial
    * Tipo:          String
    * Tamaño:        80
    * Descripcion:   En el caso que se cuente con nombre comercial debe indicarse. Es opcional
@@ -50,7 +50,7 @@ class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo que contiene el detalle de una ubicación
    */
-  Ubicacion = null;
+  Ubicacion = new Ubicacion();
 
   /**
    * Nombre:
@@ -58,7 +58,7 @@ class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo para un número telefónico. Es opcional.
    */
-  Telefono = null;
+  Telefono = new Telefono();
 
   /**
    * Nombre:
@@ -66,10 +66,10 @@ class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo para un número de fax. Es opcional.
    */
-  Fax = null;
+  Fax = new Fax();
 
   /**
-   * Nombre:        Dirección del correo electrónico del emisor.
+   * Nombre:        Dirección del correo electrónico.
    * Tipo:          String
    * Tamaño:        160
    * Descripcion:   Debe cumplir con la siguiente estructura: ^\\s*(([^<>()\\[\\]\\.,;:\\s@\\\"]+(\\.[^<>()\\[\\]\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@(([^<>()\\[\\]\\.,;:\\s@\\\"]+\\.)+[^<>()\\[\\]\\.,;:\\s@\\\"]{0,})\\s*$

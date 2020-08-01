@@ -20,7 +20,8 @@ class Identificacion {
    * Nombre:        Tipo de identificación
    * Tipo:          String
    * Tamaño:        2
-   * Descripcion:   Es un campo fijo de dos posiciones.Este campo será  de condición obligatoria, cuando se posea información en el nodo “Número de cédula física/ jurídica/NITE/DIMEX receptorVer nota 4
+   * Descripcion:   Es un campo fijo de dos posiciones.Este campo será  de condición obligatoria, cuando se posea información en el nodo “Número de cédula física/ jurídica/NITE/DIMEX receptor
+   *                Ver nota 4
    */
   Tipo = '';
 

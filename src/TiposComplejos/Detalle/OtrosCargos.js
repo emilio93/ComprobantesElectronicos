@@ -18,6 +18,22 @@ class OtrosCargos {
   TipoDocumento = 1;
 
   /**
+   * Nombre:        Número de cédula física/ jurídica/NITE/DIMEX del emisor
+   * Tipo:          String
+   * Tamaño:        12
+   * Descripcion:   Este campo será de condición  obligatoria, cuando se seleccione en “tipo de documento” el código 04.
+   *                Cuando seleccione 04 en tipo de documento y no se cuente con una línea de servicio o producto, no es obligatorio usar la parte b)  Detalle  de  la  mercancía  o servicio prestado.
+   *                El (5) tercero debe de estar inscrito como contribuyente.
+   *                Formato:
+   *                La “Cédula física” debe de contener 9 dígitos, sin cero al inicio y sin guiones La “cédula de personas Jurídicas” debe contener 10 dígitos y sin guiones
+   *                El “Documento de Identificación Migratorio para Extranjeros (DIMEX)” debe contener 11 o 12 dígitos, sin ceros al inicio y sin guiones
+   *                El “Documento de Identificación de la DGT (NITE)” debe contener 10 dígitos y sin guiones.
+   *
+   * Footnote:       5 Se entenderá como tercero el contribuyente que vende o presta el servicio o mercancía que se está cobrando.
+   */
+  NumeroIdentidadTercero = 1;
+
+  /**
    * Nombre:        Nombre o razón social del Receptor
    * Tipo:          String
    * Tamaño:        100
@@ -39,7 +55,7 @@ class OtrosCargos {
    * Tamaño:        9,5
    * Descripcion:   En el caso que el cargo posea un porcentaje o monto para su cálculo se debe de indicar el mismo.
    */
-  Porcentaje = '';
+  Porcentaje = 0;
 
   /**
    * Nombre:        Monto del cargo
