@@ -8,10 +8,14 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-const Emisor = require('TiposComplejos/Emisor');
-const Receptor = require('TiposComplejos/Receptor');
+import { Emisor } from  './TiposComplejos/Datos/Emisor' ;
+import { Receptor } from  './TiposComplejos/Datos/Receptor' ;
+import { DetalleServicio } from  './TiposComplejos/Detalle/DetalleServicio' ;
+import { ResumenFactura } from './TiposComplejos/Resumen/ResumenFactura'
+import { OtrosCargos } from './TiposComplejos/Detalle/OtrosCargos'
 
-class ComprobanteElectronico {
+
+export class ComprobanteElectronico {
   static parseXmlString(xmlString) {
   }
 
@@ -43,22 +47,23 @@ En la condición de los campos, se utilizan los encabezados:
 
 // a)Datos de encabezado:
 //      corresponden a la versión, numeración e identificación del documento electrónico, condiciones de la venta, información del emisor y la información del receptor.
-class Datos {
+export class Datos {
   /**
    * Nombre:        Código de la Actividad Económica
    * Tipo:          String
    * Tamaño:        6
    * Descripcion:   Se debe de indicar el código de la actividad económica a la cual corresponde el comprobante electrónico, en caso de contar con másde una actividad economica se debe de ingresar el código de la actividad principal.
    */
-  CodigoActividad = '';
+  CodigoActividad: string;
 
   /**
    * Nombre:        Clave del comprobante
    * Tipo:          String
    * Tamaño:        50
-   * Descripcion:   Debe cumplir con la estructura con respecto a tamaño y posición de los campos, tal como se establece en la resolución. Es un campo fijo de cincuenta posiciones y se tiene que utilizar para la consulta del código QR.Solo permite ingresar números.Ver nota 1Ver nota 4.1
+   * Descripcion:
+   *    Debe cumplir con la estructura con respecto a tamaño y posición de los campos, tal como se establece en la resolución. Es un campo fijo de cincuenta posiciones y se tiene que utilizar para la consulta del código QR.Solo permite ingresar números.Ver nota 1Ver nota 4.1
    */
-  Clave = '';
+  Clave: string;
 
   /**
    * Nombre:        Numeración consecutiva del comprobante
@@ -66,7 +71,7 @@ class Datos {
    * Tamaño:        20
    * Descripcion:   Es un campo fijo de veinte posiciones. Solo permite ingresar números.Ver notas 1 y 3
    */
-  NumeroConsecutivo = '';
+  NumeroConsecutivo: string;
 
   /**
    * Nombre:        Fecha de Emisión del comprobante
@@ -76,7 +81,7 @@ class Datos {
    *                Formato: YYYY-MM-DDThh:mi:ss[Z|(+|-)hh:mm]
    *                Ejemplo: 2016-09-26T13:00:00+06:00
    */
-  FechaEmision = '';
+  FechaEmision: string;
 
   /**
    * Nombre:        Emisor del comprobante
@@ -84,7 +89,7 @@ class Datos {
    * Tamaño:
    * Descripcion:   Tipo complejo que contiene los datos del emisor del comprobante
    */
-  Emisor = null;
+  Emisor: Emisor;
 
   /**
    * Nombre:        Receptor del comprobante
@@ -92,7 +97,7 @@ class Datos {
    * Tamaño:
    * Descripcion:   Tipo complejo que contiene los datos del receptor del comprobante
    */
-  Receptor = null;
+  Receptor: Receptor;
 
   /**
    * Nombre:        Condiciones de la venta
@@ -101,7 +106,7 @@ class Datos {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver notas 5 y 7
    */
-  CondicionVenta = '';
+  CondicionVenta: string;
 
   /**
    * Nombre:        Plazo del crédito
@@ -109,7 +114,7 @@ class Datos {
    * Tamaño:        10
    * Descripcion:   Este campo será de condición obligatoria, cuando la venta del producto o prestación de servicio sea a crédito
    */
-  PlazoCredito = '';
+  PlazoCredito: string;
 
   /**
    * Nombre:        Medio de pago
@@ -119,12 +124,12 @@ class Datos {
    *                Se puede incluir un máximo de 4 medios de pago.
    *                Ver notas 6 y 7
    */
-  MedioPago = '';
+  MedioPago: string;
 }
 
 // b)Detalle de la mercancía o servicio prestado:
 //      En esta parte se debe detallar una línea por cada artículo, especificando cantidad, valor, impuestos adicionales y valor neto, así  como descuentos y recargos que afectan al total del documento y que no se requiere especificar individualmente, así como el monto total de la transacción.
-class Detalle {
+export class Detalle {
   /**
    * Nombre:        Detalle del Servicio, Mercancía u otro.
    * Tipo:          ComplexType
@@ -132,7 +137,7 @@ class Detalle {
    * Descripcion:   Tipo complejo que agrupa las líneas del detalle.
    *                Es de carácter obligatorio cuando el comprobante incorpore al menos una línea de un producto o servicio.
    */
-  DetalleServicio = null;
+  DetalleServicio: DetalleServicio;
 
   /**
    * Nombre:        Informacion sobre otros Cargos.
@@ -140,34 +145,34 @@ class Detalle {
    * Tamaño:
    * Descripcion:   Tipo complejo.Se puede incluir un máximo de 15 repeticiones, cuando se posean otros cargos que forman parte del costo total de la línea de detalle.
    */
-  OtrosCargos = null;
+  OtrosCargos: OtrosCargos;
 }
 
 // c)Resumen del comprobante /Total de comprobante:
 //      Corresponde a la totalización de los montos del comprobante electrónico.
-class Resumen {
+export class Resumen {
   /**
    * Nombre:        Resumen de la Factura
    * Tipo:          ComplexType
    * Tamaño:
    * Descripcion:   Tipo complejo que representa el resumen de la factura.
    */
-  ResumenFactura = null;
+  ResumenFactura: ResumenFactura;
 
 }
 
 // d)Información de referencia:
 //      Se deben detallar la razón y/o los documentos de referencia, por ejemplo se debe identificar la factura que se está modificando con una nota de crédito o de débito; y en el caso de comprobantes electrónicos que sustituyen comprobantes físicos emitidos por contingencia, se debe hacer referencia al comprobante provisional.
-class Informacion {
+export class Informacion {
 }
 
 // e)Otros:
 //      comprende la información requerida para las relaciones de comercio electrónico entre las partes, que no contravenga lo establecido en la presente resolución.
-class Otros {
+export class Otros {
 }
 
 // f)Mecanismo de seguridad:
 //      En esta sección se debe incluir la firma digital o el método de seguridad emitido por el Ministerio de Hacienda sobre todo el documento, para garantizar la integridad del mismo.
 // Nota:Solamente se permite el uso de un mecanismo de seguridad a la vez, no obstante si el obligado tributario por su giro comercial decide pasarse de un método de seguridad a otro puede hacerlo. El formato para los documentos electrónicos es único, así como en su forma electrónica o impresa, lo que los diferencia es la obligatoriedad de los campos según el tipo de documento. Adicionalmente, este documento contempla el formato de los archivos XML de confirmación (aceptación y rechazo) de los comprobantes electrónicos.
-class Seguridad {
+export class Seguridad {
 }

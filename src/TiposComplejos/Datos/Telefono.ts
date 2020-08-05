@@ -8,11 +8,13 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+import { Telefonia } from './Telefonia'
+
 /**
- * Nombre:        Emisor del comprobante
+ * Nombre:
  * Tipo:          ComplexType
  * Tamaño:
- * Descripcion:   Tipo complejo que contiene los datos del emisor del comprobante
+ * Descripcion:   Tipo complejo para un número telefónico. Es opcional.
  */
-class Emisor extends Remisor {
+export class Telefono extends Telefonia {
 }

@@ -8,7 +8,7 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-class OtrosCargos {
+export class OtrosCargos {
   /**
    * Nombre:        Tipo de documento
    * Tipo:          String
@@ -39,7 +39,7 @@ class OtrosCargos {
    * Tamaño:        100
    * Descripcion:   Este campo será de condición obligatoria, cuando se seleccione en “tipo de documento” el código 04.
    */
-  NombreTercero = '';
+  NombreTercero: string;
 
   /**
    * Nombre:        Detalle de otros Cargos.
@@ -47,7 +47,7 @@ class OtrosCargos {
    * Tamaño:        160
    * Descripcion:   Se debe de indicar la descripción del cargo.
    */
-  Detalle = '';
+  Detalle: string;
 
   /**
    * Nombre:        Porcentaje
@@ -55,7 +55,7 @@ class OtrosCargos {
    * Tamaño:        9,5
    * Descripcion:   En el caso que el cargo posea un porcentaje o monto para su cálculo se debe de indicar el mismo.
    */
-  Porcentaje = 0;
+  Porcentaje : number;
 
   /**
    * Nombre:        Monto del cargo
@@ -63,5 +63,5 @@ class OtrosCargos {
    * Tamaño:        18,5
    * Descripcion:   Monto total del cargo.
    */
-  MontoCargo  = 0;
+  MontoCargo  : number;
 }

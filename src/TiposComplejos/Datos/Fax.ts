@@ -8,28 +8,13 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-/**
- * Nombre:        CodigoComercial
- * Tipo:          String
- * Tamaño:        2
- * Descripcion:   Tipo complejo para el código de un producto o servicio.
- *                Se puede incluir un máximo de 5 repeticiones de códigos de producto/servicio.
- */
-class CodigoComercial {
-  /**
-   * Nombre:        Tipo de Código de producto/servicio
-   * Tipo:          String
-   * Tamaño:        2
-   * Descripcion:   Es un campo fijo de dos posiciones
-   *                Ver nota 12
-   */
-  Tipo = '';
+import { Telefonia } from './Telefonia'
 
-  /**
-   * Nombre:        Código
-   * Tipo:          String
-   * Tamaño:        20
-   * Descripcion:
-   */
-  Codigo = '';
+/**
+ * Nombre:
+ * Tipo:          ComplexType
+ * Tamaño:
+ * Descripcion:   Tipo complejo para un número de fax. Es opcional.
+ */
+export class Fax extends Telefonia {
 }

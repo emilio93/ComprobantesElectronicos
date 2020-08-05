@@ -12,46 +12,29 @@
  * Nombre:
  * Tipo:          ComplexType
  * Tamaño:
- * Descripcion:   Tipo complejo que contiene el detalle de una ubicación
+ * Descripcion:   Tipo complejo que contiene los datos de identificación de un emisor o receptor
  */
-class Ubicacion {
-  /**
-   * Nombre:        Provincia
-   * Tipo:          String
-   * Tamaño:        1
-   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
-   */
-  Provincia = '';
+export class Identificacion {
 
   /**
-   * Nombre:        Canton
+   * Nombre:        Tipo de identificación
    * Tipo:          String
    * Tamaño:        2
-   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
+   * Descripcion:   Es un campo fijo de dos posiciones.Este campo será  de condición obligatoria, cuando se posea información en el nodo “Número de cédula física/ jurídica/NITE/DIMEX receptor
+   *                Ver nota 4
    */
-  Canton = '';
+  Tipo: string;
 
   /**
-   * Nombre:        Distrito
+   * Nombre:        Número de cédula física/ jurídica/NITE/DIMEX del receptor
    * Tipo:          String
-   * Tamaño:        2
-   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
+   * Tamaño:        12
+   * Descripcion:   Este campo será  de condición obligatoria, cuando se posea información en el nodo “Tipo de identificación del receptor.
+   *                Formato:
+   *                  La “Cédula física” debe de contener 9 dígitos, sin cero al inicio y sin guiones
+   *                  La  “cédula de personas Jurídicas”  debe contener 10 dígitos y sin guiones
+   *                  El  “Documento de Identificación Migratorio para Extranjeros (DIMEX)” debe contener 11 o 12 dígitos, sin ceros al inicio y sin guiones
+   *                  El  “Documento de Identificación de la DGT  (NITE)” debe contener 10 dígitos y sin guiones.
    */
-  Distrito = '';
-
-  /**
-   * Nombre:        Barrio
-   * Tipo:          String
-   * Tamaño:        2
-   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
-   */
-  Barrio = '';
-
-  /**
-   * Nombre:        Otras Señas
-   * Tipo:          String
-   * Tamaño:        250
-   * Descripcion:   Debe de indicarse lo másexacta posible.
-   */
-  OtrasSenas = '';
+  Numero : string;
 }

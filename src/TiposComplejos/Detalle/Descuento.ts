@@ -7,7 +7,29 @@
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
 
-class NotaDebito {
+/**
+ * Nombre:
+ * Tipo:          ComplexType
+ * Tamaño:
+ * Descripcion:   Tipo complejo descuento.
+ *                Se puede incluir un máximo de 5 repeticiones de descuentos, cada descuento adicional se calcula sobre la base menos el descuento anterior.
+ */
+export class Descuento {
+  /**
+   * Nombre:        Monto de descuentos concedidos
+   * Tipo:          Decimal
+   * Tamaño:        18,5
+   * Descripcion:   Este campo será  de condición obligatoria, cuando exista un descuento.
+   *                Es un número decimal compuesto por 13 enteros y 5 decimales.
+   */
+  MontoDescuento: string;
+
+  /**
+   * Nombre:        Naturaleza del descuento
+   * Tipo:          String
+   * Tamaño:        80
+   * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “monto de descuentos concedidos”
+   */
+  NaturalezaDescuento: string;
 }

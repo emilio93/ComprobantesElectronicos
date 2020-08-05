@@ -9,26 +9,49 @@
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 /**
- * Nombre:        Receptor del comprobante
+ * Nombre:
  * Tipo:          ComplexType
  * Tamaño:
- * Descripcion:   Tipo complejo que contiene los datos del receptor del comprobante
+ * Descripcion:   Tipo complejo que contiene el detalle de una ubicación
  */
-class Receptor extends Remisor {
+export class Ubicacion {
   /**
-   * Nombre:        Número de identificación en caso de que el receptor sea un extranjero
+   * Nombre:        Provincia
    * Tipo:          String
-   * Tamaño:        20
-   * Descripcion:   Este campo será  de condición obligatoria, cuando el cliente lo requiera
+   * Tamaño:        1
+   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
    */
-  IdentificacionExtranjero = '';
+  Provincia: string;
 
   /**
-   * Nombre:        Otras señas Extranjero
+   * Nombre:        Canton
    * Tipo:          String
-   * Tamaño:        300
-   * Descripcion:   Campo para incluir la dirección en el extranjero, en caso de requerirlo.
+   * Tamaño:        2
+   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
    */
-  OtrasSenasExtranjero = '';
+  Canton: string;
 
+  /**
+   * Nombre:        Distrito
+   * Tipo:          String
+   * Tamaño:        2
+   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
+   */
+  Distrito: string;
+
+  /**
+   * Nombre:        Barrio
+   * Tipo:          String
+   * Tamaño:        2
+   * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
+   */
+  Barrio: string;
+
+  /**
+   * Nombre:        Otras Señas
+   * Tipo:          String
+   * Tamaño:        250
+   * Descripcion:   Debe de indicarse lo másexacta posible.
+   */
+  OtrasSenas: string;
 }
