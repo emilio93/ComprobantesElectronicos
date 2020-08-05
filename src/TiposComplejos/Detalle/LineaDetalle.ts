@@ -20,7 +20,7 @@ export class LineaDetalle {
    * Tamaño:
    * Descripcion:   De 1 a 1000
    */
-  NumeroLinea = 1;
+  NumeroLinea: number;
 
   /**
    * Nombre:        Partida Arancelaria

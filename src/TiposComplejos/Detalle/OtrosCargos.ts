@@ -15,7 +15,7 @@ export class OtrosCargos {
    * Tamaño:        2
    * Descripcion:   Ver nota 16
    */
-  TipoDocumento = 1;
+  TipoDocumento: number;
 
   /**
    * Nombre:        Número de cédula física/ jurídica/NITE/DIMEX del emisor
@@ -31,7 +31,7 @@ export class OtrosCargos {
    *
    * Footnote:       5 Se entenderá como tercero el contribuyente que vende o presta el servicio o mercancía que se está cobrando.
    */
-  NumeroIdentidadTercero = 1;
+  NumeroIdentidadTercero: number;
 
   /**
    * Nombre:        Nombre o razón social del Receptor
