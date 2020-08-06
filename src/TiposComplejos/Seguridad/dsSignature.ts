@@ -25,5 +25,5 @@
  *                Por otra parte todo archivo XML generado por un emisor-receptor electrónicoy  receptor  electrónico-no  emisor,  que  se  encuentre  obligado  hacer uso de comprobantes  electrónicos debe de ser enviado a la Dirección General de Tributacion para su respectiva validación una vez generado y firmado por el emisor, esto conforme lo indicado en el artículo 9, de la resolución DGT-R-48-2016 del  7 de  octubre  de  2016denominada “Comprobantes electrónicos”, no obstante el archivo XML del comprobante electrónico el cual además de contar con la firma del emisor se le incorporala firma del receptor no se requiere que sea  enviado  a  la  Dirección  General  de  Tributacion  al  ser  este  comprobante únicamente  para  uso  comercial,  ya  que  para  fines  tributarios  será  válido  el primer archivo enviado por el emisor conforme lo indicado en el artículo 9 en mención, así como sus respectivos mensajesde confirmación.
  *                ”En  caso  de  la  Factura  de  Compra la misma debe  de  ser  firmada  por  el Receptor que es quien la emite y la envía al validador.
  */
-class dsSignature {
+export class dsSignature {
 }

@@ -8,28 +8,14 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-/**
- * Nombre:
- * Tipo:          ComplexType
- * Tamaño:
- * Descripcion:   Tipo complejo descuento.
- *                Se puede incluir un máximo de 5 repeticiones de descuentos, cada descuento adicional se calcula sobre la base menos el descuento anterior.
- */
-class Descuento {
-  /**
-   * Nombre:        Monto de descuentos concedidos
-   * Tipo:          Decimal
-   * Tamaño:        18,5
-   * Descripcion:   Este campo será  de condición obligatoria, cuando exista un descuento.
-   *                Es un número decimal compuesto por 13 enteros y 5 decimales.
-   */
-  MontoDescuento = '';
+import { LineaDetalle } from './LineaDetalle'
 
+export class DetalleServicio {
   /**
-   * Nombre:        Naturaleza del descuento
-   * Tipo:          String
-   * Tamaño:        80
-   * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “monto de descuentos concedidos”
+   * Nombre:        Línea de detalle
+   * Tipo:          ComplexType
+   * Tamaño:
+   * Descripcion:   Tipo complejo que representa cada línea del detalle de la mercancía o servicio prestado.
    */
-  NaturalezaDescuento = '';
+  LineaDetalle: LineaDetalle;
 }

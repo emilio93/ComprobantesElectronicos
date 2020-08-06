@@ -8,6 +8,8 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+import { Exoneracion } from './Exoneracion'
+
 /**
  * Nombre:
  * Tipo:          ComplexType
@@ -16,7 +18,7 @@
  *                Este campo sea de condición obligatoria, cuando el producto/servicio este gravado con algún impuesto.
  *                Se pueden utilizar para una misma línea la cantidad de códigos de impuestos que se requieran para cada producto.
  */
-class Impuesto {
+export class Impuesto {
   /**
    * Nombre:        Código del impuesto
    * Tipo:          String
@@ -26,7 +28,7 @@ class Impuesto {
    *                Al utilizar el código 07 se debe de utilizar para el cálculo del impuesto el campo denominado “base imponible “ y la tarifa.
    *                Al utilizar el código 08, se debe utilizar para el cálculo de factor del IVA por el subtotal.
    */
-  Codigo = '';
+  Codigo: string;
 
   /**
    * Nombre:        Código  de  la  tarifa  del impuesto
@@ -37,7 +39,7 @@ class Impuesto {
    *                Se convierte en obligatorio para los Códigos 01, 07.
    *                El código debe coincidir con la tarifa asociada al producto (Según catálogo Cabys), En los casos en los que la ley o el reglamento establece que el receptor puede acreditarse una tarifa inferior a la establecida en el Cabys, esto sin necesidad de contar con el documento de exoneración emitido por el sistema EXONET, el emisor deberá indicar dicha tarifa reducida y no la indicada en el Cabys
    */
-  CodigoTarifa = '';
+  CodigoTarifa: string;
 
   /**
    * Nombre:        Tarifa del impuesto
@@ -48,7 +50,7 @@ class Impuesto {
    *                Debe de expresarse en porcentaje.
    *                Ver nota 8.1
    */
-  Tarifa = '';
+  Tarifa: string;
 
   /**
    * Nombre:        Factor del impuesto
@@ -57,7 +59,7 @@ class Impuesto {
    * Descripcion:   Este campo es de condición obligatoria, cuando el producto/servicio posea un factor para su cálculo.
    *                Cuando en el código de impuesto se defina IVA Bienes Usados se deberá utilizar este campo con el factor establecido por el Ministerio de Hacienda.
    */
-  FactorIVA = '';
+  FactorIVA: string;
 
   /**
    * Nombre:        Monto del impuesto
@@ -69,7 +71,7 @@ class Impuesto {
    *                c. En caso de utilizar el campo “Baseimponible”, este campo se obtiene de la multiplicación “Baseimponible” por la tarifa
    *                Es  un  número  decimal  compuesto  por  13  enteros  y  5 decimales.
    */
-  Monto = '';
+  Monto: string;
 
   /**
    * Nombre:        Monto de impuesto de exportación.
@@ -77,7 +79,7 @@ class Impuesto {
    * Tamaño:        18,5
    * Descripcion:   Uso exclusivo para exportación
    */
-  MontoExportacion = '';
+  MontoExportacion: string;
 
   /**
    * Nombre:        Información de exoneración
@@ -86,5 +88,5 @@ class Impuesto {
    * Descripcion:   Tipo complejo con detalles de la exoneración.
    *                Este campo será de condición obligatoria cuando la venta tenga alguna exoneración.
    */
-  Exoneración = null;
+  Exoneracion: Exoneracion;
 }

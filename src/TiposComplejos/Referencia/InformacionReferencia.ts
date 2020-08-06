@@ -22,7 +22,7 @@
  * Tamaño:
  * Descripcion:   Tipo complejo que representa el detalle de la referencia.
  */
-class InformacionReferencia {
+export class InformacionReferencia {
   /**
    * Nombre:        Tipo de documento de referencia
    * Tipo:          String
@@ -30,7 +30,7 @@ class InformacionReferencia {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver nota 10 y 7
    */
-  TipoDoc = '';
+  TipoDoc: string;
 
   /**
    * Nombre:        Clave numérica del comprobante electrónico o consecutivo del documento de referencia.
@@ -38,7 +38,7 @@ class InformacionReferencia {
    * Tamaño:        50
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya  información  en  el  campo  “Tipo  de documento de referencia”, exceptocuando se utilice el código 13
    */
-  Numero = '';
+  Numero: string;
 
   /**
    * Nombre:        Fecha de emisión del documento de referencia.
@@ -46,7 +46,7 @@ class InformacionReferencia {
    * Tamaño:
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya  información  en  el  campo  “Tipo  de documento de referencia”
    */
-  FechaEmision = '';
+  FechaEmision: string;
 
   /**
    * Nombre:        Código de referencia
@@ -55,7 +55,7 @@ class InformacionReferencia {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver nota 9 y 7 Este campo será de condiciónobligatoria, cuando se incluya información en el campo “Tipo de documento de referencia”, exceptocuando se utilice el código 13
    */
-  Codigo = '';
+  Codigo: string;
 
   /**
    * Nombre:        Razón de referencia
@@ -63,5 +63,5 @@ class InformacionReferencia {
    * Tamaño:        180
    * Descripcion:   Este campo será de condición obligatoria, cuando seincluya  información  en  el  campo  “Tipo  de documento de referencia” excepto cuando se utilice el código 13
    */
-  Razon = '';
+  Razon: string;
 }

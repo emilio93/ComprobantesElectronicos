@@ -12,7 +12,22 @@
  * Nombre:
  * Tipo:          ComplexType
  * Tamaño:
- * Descripcion:   Tipo complejo para un número telefónico. Es opcional.
+ * Descripcion:   Tipo complejo para un número telefónico, fax u otros similares.
  */
-class Telefono extends Telefonia {
+export class Telefonia {
+  /**
+   * Nombre:        Código del País
+   * Tipo:          Integer
+   * Tamaño:        3
+   * Descripcion:   En el caso que se cuente con un número de teléfono debe indicarse.
+   */
+  CodigoPais: number;
+
+  /**
+ * Nombre:        Número telefónico
+ * Tipo:          Integer
+ * Tamaño:        20
+ * Descripcion:   En el caso que se cuente con un número de teléfono debe indicarse.
+ */
+  NumTelefono: number;
 }

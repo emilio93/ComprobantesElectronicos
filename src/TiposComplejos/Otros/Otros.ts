@@ -8,26 +8,34 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+// Las referencias se utilizarán para los siguientes casos:
+//  a)Nota de crédito que elimina un documento de referencia en forma completa.
+//  b)Nota de débito que elimina una nota de crédito en la referencia en forma completa.
+//  c)Notas de crédito o débito que corrigen montos de otro documento.
+//  d)  Factura electrónica por contingencia, sustituyendo un comprobante provisional.
+//  e) Cualquier documento relacionado con la factura electrónica.
+//  Nota: Se puede incluir un máximo de 10 repeticiones de información de referencia
+
 /**
- * Nombre:        Código y Tipo de Moneda
+ * Nombre:        Otros
  * Tipo:          ComplexType
  * Tamaño:
- * Descripcion:   Se convierte en obligatorio cuando el comprobante electrónico se exprese en moneda extranjera.
+ * Descripcion:   Tipo complejo que agrupa varias definiciones de "Otros"
  */
-class CodigoTipoMoneda {
+export class Otros {
   /**
-   * Nombre:        Código de la moneda.
+   * Nombre:        Otro Texto
    * Tipo:          String
-   * Tamaño:        3
-   * Descripcion:   Ver nota 13 y nota 13.1
+   * Tamaño:        inf
+   * Descripcion:   Elemento opcional que se puede utilizar para almacenar texto.
    */
-  CodigoMoneda = '';
+  OtroTexto: string;
 
   /**
-   * Nombre:        Tipo de cambio
-   * Tipo:          Decimal
-   * Tamaño:        18,5
-   * Descripcion:   Es un número decimal compuesto por 13 enteros y 5 decimales.
+   * Nombre:        Otro Contenido
+   * Tipo:          AnyOtherType
+   * Tamaño:        inf
+   * Descripcion:   Elemento opcional que se puede utilizar para almacenar contenido estructurado.
    */
-  TipoCambio = 0;
+  OtroContenido: string;
 }

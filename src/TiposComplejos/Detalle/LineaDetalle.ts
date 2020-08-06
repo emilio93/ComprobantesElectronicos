@@ -8,14 +8,19 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-class LineaDetalle {
+import { CodigoComercial } from './CodigoComercial'
+import { Descuento } from './Descuento'
+import { Impuesto } from './Impuesto'
+
+
+export class LineaDetalle {
   /**
    * Nombre:        Número de la línea
    * Tipo:          PositiveInteger
    * Tamaño:
    * Descripcion:   De 1 a 1000
    */
-  NumeroLinea = 1;
+  NumeroLinea: number;
 
   /**
    * Nombre:        Partida Arancelaria
@@ -23,7 +28,7 @@ class LineaDetalle {
    * Tamaño:        12
    * Descripcion:   Se convierte en carácter obligatorio cuando se elija el tipo de comprobante “Factura electrónicade exportación”y la misma corresponda a la venta de una mercancía.
    */
-  PartidaArancelaria = '';
+  PartidaArancelaria: string;
 
   /**
    * Nombre:        Código de Producto/servicio
@@ -32,7 +37,7 @@ class LineaDetalle {
    * Descripcion:   Ver nota 17
    * Footnote:      Rige apartir del 01/12/2020; a partir de la fecha indicada anteriormente dicho campo se convierte en “Obligatorio”.
    */
-  Codigo = '';
+  Codigo: string;
 
   /**
    * Nombre:
@@ -40,7 +45,7 @@ class LineaDetalle {
    * Tamaño:
    * Descripcion:   Tipo complejo para el código de un producto o servicio. Se puede incluir un máximo de 5 repeticiones de códigos de producto/servicio.
    */
-  CodigoComercial = null;
+  CodigoComercial: CodigoComercial;
 
   /**
    * Nombre:        Cantidad
@@ -48,7 +53,7 @@ class LineaDetalle {
    * Tamaño:        16,3
    * Descripcion:   Es un número decimal compuesto por 13 enteros y 3 decimales.
    */
-  Cantidad = 0;
+  Cantidad : number;
 
   /**
    * Nombre:        Unidad de Medida
@@ -56,7 +61,7 @@ class LineaDetalle {
    * Tamaño:        15
    * Descripcion:   Ver nota 15
    */
-  UnidadMedida = 0;
+  UnidadMedida : number;
 
   /**
    * Nombre:        Unidad de Medida Comercial
@@ -64,7 +69,7 @@ class LineaDetalle {
    * Tamaño:        20
    * Descripcion:   Nodo utilizado para indicar una unidad de medida que nace del propio giro comercial del establecimiento, no es una cantidad estandarizada de una determinada magnitud física, definida y adoptada por convención o por ley ejemplo  "1 Tarima"
    */
-  UnidadMedidaComercial = 0;
+  UnidadMedidaComercial : number;
 
   /**
    * Nombre:        Detalle de la mercancía transferida o servicio prestado
@@ -74,7 +79,7 @@ class LineaDetalle {
    *                Es de carácter obligatorio cuando el comprobante incorpore al menos una línea de un producto o servicio.
    *                Debe de detallarse el tipo de producto o servicio que se brinde.
    */
-  Detalle = '';
+  Detalle: string;
 
   /**
    * Nombre:        Precio unitario
@@ -82,7 +87,7 @@ class LineaDetalle {
    * Tamaño:        18,5
    * Descripcion:   Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  PrecioUnitario = 0;
+  PrecioUnitario : number;
 
   /**
    * Nombre:        Monto total
@@ -91,7 +96,7 @@ class LineaDetalle {
    * Descripcion:   Se obtiene de la multiplicación del campo “cantidad” por el campo “precio unitario”.
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  MontoTotal = 0;
+  MontoTotal : number;
 
   /**
    * Nombre:
@@ -99,7 +104,7 @@ class LineaDetalle {
    * Tamaño:
    * Descripcion:   Tipo complejo descuento.Se puede incluir un máximo de 5 repeticiones de descuentos, cada descuento adicional se calcula sobre la base menos el descuento anterior.
    */
-  Descuento = null;
+  Descuento: Descuento;
 
   /**
    * Nombre:        Número de la línea
@@ -108,7 +113,7 @@ class LineaDetalle {
    * Descripcion:   Se obtiene de la resta del campo “monto total” menos “monto de descuento concedido”.
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  SubTotal = 0;
+  SubTotal : number;
 
   /**
    * Nombre:        Base imponible especial
@@ -117,7 +122,7 @@ class LineaDetalle {
    * Descripcion:   Se convierteen obligatorio cuando se seleccione en el campo “Código del impuesto” 07.
    *                No es necesario su visualisacion para la representación grafica.
    */
-  BaseImponible = 0;
+  BaseImponible : number;
 
   /**
    * Nombre:
@@ -127,7 +132,7 @@ class LineaDetalle {
    *                Este campo sea de condición obligatoria, cuando el producto/servicio este gravado con algún impuesto.
    *                Se pueden utilizar para una misma línea la cantidad de códigos de impuestos que se requieran paracada producto.
    */
-  Impuesto = null;
+  Impuesto: Impuesto;
 
   /**
    * Nombre:        Impuesto Neto
@@ -138,7 +143,7 @@ class LineaDetalle {
    *                Este monto se obtiene al restar el campo  “Monto del Impuesto” menos “Monto del Impuesto Exonerado”.
    *                Escaso de estar exonerado el 100 % se debe de colocar “0”.
    */
-  ImpuestoNeto = 0;
+  ImpuestoNeto : number;
 
   /**
    * Nombre:        Total por línea de detalle
@@ -149,5 +154,5 @@ class LineaDetalle {
    *                  -Cuando posee una exoneración, se obtiene de la sumatoria de los campos  “Subtotal”, “Impuesto Neto”.
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  MontoTotalLinea = 0;
+  MontoTotalLinea : number;
 }

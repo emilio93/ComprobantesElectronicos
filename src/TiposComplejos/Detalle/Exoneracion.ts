@@ -15,7 +15,7 @@
  * Descripcion:   Tipo complejo con detalles de la exoneración.
  *                Este campo será de condición obligatoria cuando la venta tenga alguna exoneración.
  */
-class Exoneración {
+export class Exoneracion {
   /**
    * Nombre:        Tipo de documento de exoneración o de autorización.
    * Tipo:          String
@@ -23,7 +23,7 @@ class Exoneración {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver nota 10.1 y 7
    */
-  Tipodocumento = '';
+  Tipodocumento: string;
 
   /**
    * Nombre:        Número de documento de exoneración o de autorización
@@ -32,7 +32,7 @@ class Exoneración {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de documento de exoneración o de autorización”
    *                Debe de indicarse tal y como se encuentra en el documento otorgado por la institución incluyendo los guiones.
    */
-  NumeroDocumento = '';
+  NumeroDocumento: string;
 
   /**
    * Nombre:        Nombre  de  institución  o dependencia  que  emitió la exoneración
@@ -40,7 +40,7 @@ class Exoneración {
    * Tamaño:        160
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de documento de exoneración o de autorización”
    */
-  NombreInstitucion = '';
+  NombreInstitucion: string;
 
   /**
    * Nombre:        Fecha de emisión del documento de exoneración o de autorización
@@ -49,7 +49,7 @@ class Exoneración {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de documento de exoneración o de autorización”.
    *                Tipo de dato de fecha y hora, basado en  el  estándar RFC3339 sección 5.6, tipo “date-time”.Formato: YYYY-MM-DDThh:mi:ss[Z|(+|-)hh:mm]Ejemplo: 2016-09-26T13:00:00+06:00
    */
-  FechaEmision = '';
+  FechaEmision: string;
 
   /**
    * Nombre:        Porcentaje de la Exoneración
@@ -58,7 +58,7 @@ class Exoneración {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de exoneración”.
    *                Debe de indicarse el porcentaje otorgado de exoneración.
    */
-  PorcentajeExoneracion = '';
+  PorcentajeExoneracion: string;
 
   /**
    * Nombre:        Monto del Impuesto Exonerado
@@ -69,14 +69,6 @@ class Exoneración {
    *                Dicho monto se obtiene de la multiplicación del campo “porcentaje de la exoneración” por el campo “Monto del Impuesto”.
    * Footnote:      4 Apartir del 01 de julio del 2020 la fórmulade cálculodel campo denominado “Monto de Impuesto exonerado” se modifica de la siguiente manera“Se obtiene de la multiplicación del campo “porcentaje de la exoneración” por el campo “Subtotal”.
    */
-  MontoExoneracion = '';
+  MontoExoneracion: string;
 
-  /**
-   * Nombre:        Información de exoneración
-   * Tipo:          ComplexType
-   * Tamaño:
-   * Descripcion:   Tipo complejo con detalles de la exoneración.
-   *                Este campo será de condición obligatoria cuando la venta tenga alguna exoneración.
-   */
-  Exoneración = null;
 }

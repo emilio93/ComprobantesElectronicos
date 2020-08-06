@@ -8,10 +8,10 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-const Identificacion = require('TiposComplejos/Identificacion');
-const Ubicacion = require('TiposComplejos/Ubicacion');
-const Telefono = require('TiposComplejos/Telefono');
-const Fax = require('TiposComplejos/Fax');
+import { Identificacion } from './Identificacion'
+import { Ubicacion } from './Ubicacion'
+import { Telefono } from './Telefono'
+import { Fax } from './Fax'
 
 /**
  * Nombre:        Emisor o Receptor del comprobante
@@ -19,14 +19,14 @@ const Fax = require('TiposComplejos/Fax');
  * Tamaño:
  * Descripcion:   Tipo complejo que contiene los datos del emisor o receptor del comprobante
  */
-class Remisor {
+export class Remisor {
   /**
    * Nombre:        Nombre o razón social
    * Tipo:          String
    * Tamaño:        100
    * Descripcion:
    */
-  Nombre = '';
+  Nombre: string;
 
   /**
    * Nombre:
@@ -34,7 +34,7 @@ class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo que contiene los datos de identificación
    */
-  Identificacion = new Identificacion();
+  Identificacion: Identificacion;
 
   /**
    * Nombre:        Nombre comercial
@@ -42,7 +42,7 @@ class Remisor {
    * Tamaño:        80
    * Descripcion:   En el caso que se cuente con nombre comercial debe indicarse. Es opcional
    */
-  NombreComercial = '';
+  NombreComercial: string;
 
   /**
    * Nombre:
@@ -50,7 +50,7 @@ class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo que contiene el detalle de una ubicación
    */
-  Ubicacion = new Ubicacion();
+  Ubicacion: Ubicacion;
 
   /**
    * Nombre:
@@ -58,7 +58,7 @@ class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo para un número telefónico. Es opcional.
    */
-  Telefono = new Telefono();
+  Telefono: Telefono;
 
   /**
    * Nombre:
@@ -66,7 +66,7 @@ class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo para un número de fax. Es opcional.
    */
-  Fax = new Fax();
+  Fax: Fax;
 
   /**
    * Nombre:        Dirección del correo electrónico.
@@ -74,5 +74,5 @@ class Remisor {
    * Tamaño:        160
    * Descripcion:   Debe cumplir con la siguiente estructura: ^\\s*(([^<>()\\[\\]\\.,;:\\s@\\\"]+(\\.[^<>()\\[\\]\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@(([^<>()\\[\\]\\.,;:\\s@\\\"]+\\.)+[^<>()\\[\\]\\.,;:\\s@\\\"]{0,})\\s*$
    */
-  CorreoElectronico = '';
+  CorreoElectronico: string;
 }
