@@ -19,7 +19,7 @@ import { Fax } from './Fax'
  * Tamaño:
  * Descripcion:   Tipo complejo que contiene los datos del emisor o receptor del comprobante
  */
-export class Remisor {
+export abstract class Remisor {
   /**
    * Nombre:        Nombre o razón social
    * Tipo:          String

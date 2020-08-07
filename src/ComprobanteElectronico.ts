@@ -15,12 +15,14 @@ import { ResumenFactura } from './TiposComplejos/Resumen/ResumenFactura'
 import { OtrosCargos } from './TiposComplejos/Detalle/OtrosCargos'
 
 
-export class ComprobanteElectronico {
+export abstract class ComprobanteElectronico {
   static parseXmlString(xmlString) {
   }
 
   static parseXmlFile(xmlFile) {
   }
+
+  abstract validarCondicionCampos(): boolean;
 }
 
 /**
