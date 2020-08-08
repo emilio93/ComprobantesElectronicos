@@ -14,9 +14,33 @@ import { DetalleServicio } from  './TiposComplejos/Detalle/DetalleServicio' ;
 import { ResumenFactura } from './TiposComplejos/Resumen/ResumenFactura'
 import { OtrosCargos } from './TiposComplejos/Detalle/OtrosCargos'
 
+import { Parser } from 'xml2js';
+import { ComprobanteElectronicoFactory } from './ComprobantesElectronicos/ComprobanteElectronicoFactory';
 
 export abstract class ComprobanteElectronico {
-  static parseXmlString(xmlString) {
+
+  Datos : Datos;
+  Detalle : Detalle;
+  Resumen : Resumen;
+
+  constructor() {
+
+  }
+
+  static async parseXmlString(xmlString) {
+    let parser = new Parser();
+    let parsedXml;
+    try {
+      parsedXml = await parser.parseStringPromise(xmlString);
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+    let factory = new ComprobanteElectronicoFactory();
+    // let Comprobante = factory.create(parsedXml);
+
+
+    return parsedXml;
   }
 
   static parseXmlFile(xmlFile) {
