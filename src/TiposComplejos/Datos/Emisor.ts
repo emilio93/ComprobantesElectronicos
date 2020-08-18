@@ -17,4 +17,7 @@ import { Remisor } from './Remisor'
  * Descripcion:   Tipo complejo que contiene los datos del emisor del comprobante
  */
 export class Emisor extends Remisor {
+  constructor(emisor) {
+    super(emisor);
+  }
 }

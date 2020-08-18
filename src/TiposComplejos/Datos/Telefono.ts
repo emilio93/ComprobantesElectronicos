@@ -17,4 +17,7 @@ import { Telefonia } from './Telefonia'
  * Descripcion:   Tipo complejo para un número telefónico. Es opcional.
  */
 export class Telefono extends Telefonia {
+  constructor(telefono) {
+    super(telefono);
+  }
 }

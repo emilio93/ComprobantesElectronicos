@@ -36,5 +36,11 @@ export class Identificacion {
    *                  El  “Documento de Identificación Migratorio para Extranjeros (DIMEX)” debe contener 11 o 12 dígitos, sin ceros al inicio y sin guiones
    *                  El  “Documento de Identificación de la DGT  (NITE)” debe contener 10 dígitos y sin guiones.
    */
-  Numero : string;
+  Numero: string;
+
+  constructor(identificacion) {
+    if (identificacion === null) return;
+    this.Numero = identificacion.Numero[0];
+    this.Tipo = identificacion.Tipo[0];
+  }
 }

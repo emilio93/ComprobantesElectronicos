@@ -54,4 +54,13 @@ export class Ubicacion {
    * Descripcion:   Debe de indicarse lo másexacta posible.
    */
   OtrasSenas: string;
+
+  constructor(ubicacion) {
+    if (ubicacion === null) return;
+    this.Barrio = typeof ubicacion.Barrio !== 'undefined' ? ubicacion.Barrio[0] : null;
+    this.Canton = typeof ubicacion.Canton !== 'undefined' ? ubicacion.Canton[0] : null;
+    this.Distrito = typeof ubicacion.Distrito !== 'undefined' ? ubicacion.Distrito[0] : null;
+    this.OtrasSenas = typeof ubicacion.OtrasSenas !== 'undefined' ? ubicacion.OtrasSenas[0] : null;
+    this.Provincia = typeof ubicacion.Provincia !== 'undefined' ? ubicacion.Provincia[0] : null;
+  }
 }

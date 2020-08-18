@@ -8,9 +8,9 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { Emisor } from  './TiposComplejos/Datos/Emisor' ;
-import { Receptor } from  './TiposComplejos/Datos/Receptor' ;
-import { DetalleServicio } from  './TiposComplejos/Detalle/DetalleServicio' ;
+import { Emisor } from './TiposComplejos/Datos/Emisor';
+import { Receptor } from './TiposComplejos/Datos/Receptor';
+import { DetalleServicio } from './TiposComplejos/Detalle/DetalleServicio';
 import { ResumenFactura } from './TiposComplejos/Resumen/ResumenFactura'
 import { OtrosCargos } from './TiposComplejos/Detalle/OtrosCargos'
 
@@ -19,12 +19,14 @@ import { ComprobanteElectronicoFactory } from './ComprobantesElectronicos/Compro
 
 export abstract class ComprobanteElectronico {
 
-  Datos : Datos;
-  Detalle : Detalle;
-  Resumen : Resumen;
+  Datos: Datos;
+  Detalle: Detalle;
+  Resumen: Resumen;
 
-  constructor() {
-
+  constructor(comprobante) {
+    this.Datos = new Datos(comprobante);
+    this.Detalle = new Detalle();
+    this.Resumen = new Resumen();
   }
 
   static async parseXmlString(xmlString) {
@@ -37,10 +39,10 @@ export abstract class ComprobanteElectronico {
       return null;
     }
     let factory = new ComprobanteElectronicoFactory();
-    // let Comprobante = factory.create(parsedXml);
+    let Comprobante = factory.create(parsedXml);
 
 
-    return parsedXml;
+    return Comprobante;
   }
 
   static parseXmlFile(xmlFile) {
@@ -151,6 +153,21 @@ export class Datos {
    *                Ver notas 6 y 7
    */
   MedioPago: string;
+
+
+  constructor(comprobante) {
+    this.Emisor = new Emisor(comprobante.Emisor[0]);
+    this.Receptor = new Receptor(comprobante.Receptor[0])
+
+    this.Clave = comprobante.Clave[0];
+    this.CodigoActividad = comprobante.CodigoActividad[0];
+    this.CondicionVenta = comprobante.CondicionVenta[0];
+
+    this.FechaEmision = comprobante.FechaEmision[0];
+    this.MedioPago = comprobante.MedioPago[0];
+    this.NumeroConsecutivo = comprobante.NumeroConsecutivo[0];
+    this.PlazoCredito = comprobante.PlazoCredito[0];
+  }
 }
 
 // b)Detalle de la mercancía o servicio prestado:
@@ -201,4 +218,15 @@ export class Otros {
 //      En esta sección se debe incluir la firma digital o el método de seguridad emitido por el Ministerio de Hacienda sobre todo el documento, para garantizar la integridad del mismo.
 // Nota:Solamente se permite el uso de un mecanismo de seguridad a la vez, no obstante si el obligado tributario por su giro comercial decide pasarse de un método de seguridad a otro puede hacerlo. El formato para los documentos electrónicos es único, así como en su forma electrónica o impresa, lo que los diferencia es la obligatoriedad de los campos según el tipo de documento. Adicionalmente, este documento contempla el formato de los archivos XML de confirmación (aceptación y rechazo) de los comprobantes electrónicos.
 export class Seguridad {
+}
+
+export class FacturaElectronica extends ComprobanteElectronico {
+
+  constructor(parsedXml: Object) {
+    super(parsedXml);
+  }
+
+  validarCondicionCampos(): boolean {
+    return true;
+  }
 }

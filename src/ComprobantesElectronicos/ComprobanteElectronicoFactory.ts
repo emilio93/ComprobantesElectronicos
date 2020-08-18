@@ -9,13 +9,16 @@
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-// import { FacturaElectronica } from "./FacturaElectronica";
-import { ComprobanteElectronico } from "../ComprobanteElectronico";
+import { ComprobanteElectronico, FacturaElectronica } from "../ComprobanteElectronico";
 
 export class ComprobanteElectronicoFactory {
   create(parsedXml: any): ComprobanteElectronico {
-    // let Comprobante = new FacturaElectronica();
-    // return Comprobante;
-    return null;
+    let Comprobante = null;
+    if (typeof parsedXml === 'object' && parsedXml !== null) {
+      if (typeof parsedXml.FacturaElectronica === 'object' && parsedXml.FacturaElectronica !== null) {
+        Comprobante = new FacturaElectronica(parsedXml.FacturaElectronica);
+      }
+    }
+    return Comprobante;
   }
 }

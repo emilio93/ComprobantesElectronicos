@@ -75,4 +75,15 @@ export abstract class Remisor {
    * Descripcion:   Debe cumplir con la siguiente estructura: ^\\s*(([^<>()\\[\\]\\.,;:\\s@\\\"]+(\\.[^<>()\\[\\]\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@(([^<>()\\[\\]\\.,;:\\s@\\\"]+\\.)+[^<>()\\[\\]\\.,;:\\s@\\\"]{0,})\\s*$
    */
   CorreoElectronico: string;
+
+  constructor(remisor) {
+    this.Identificacion = new Identificacion(typeof remisor.Identificacion !== 'undefined' ? remisor.Identificacion[0] : null);
+    this.Fax = new Fax(typeof remisor.Fax !== 'undefined' ? remisor.Fax[0] : null);
+    this.Telefono = new Telefono(remisor.Telefono[0]);
+    this.Ubicacion = new Ubicacion(typeof remisor.Ubicacion !== 'undefined' ? remisor.Ubicacion[0] : null);
+
+    this.CorreoElectronico = remisor.CorreoElectronico[0];
+    this.Nombre = remisor.Nombre[0];
+    this.NombreComercial = typeof remisor.NombreComercial !== 'undefined' ? remisor.NombreComercial[0] : null;
+  }
 }

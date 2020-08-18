@@ -30,4 +30,10 @@ export class Telefonia {
  * Descripcion:   En el caso que se cuente con un número de teléfono debe indicarse.
  */
   NumTelefono: number;
+
+  constructor(telefonia) {
+    if (telefonia === null) return;
+    this.CodigoPais = telefonia.CodigoPais[0];
+    this.NumTelefono = telefonia.NumTelefono[0];
+  }
 }

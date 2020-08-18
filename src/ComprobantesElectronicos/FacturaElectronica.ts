@@ -13,8 +13,8 @@ import { ComprobanteElectronico } from "../ComprobanteElectronico";
 
 export class FacturaElectronica extends ComprobanteElectronico {
 
-  constructor() {
-    super();
+  constructor(parsedXml: Object) {
+    super(parsedXml);
   }
 
   validarCondicionCampos(): boolean {
