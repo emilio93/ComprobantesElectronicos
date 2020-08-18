@@ -5,3 +5,9 @@ Modelos de Comprobantes Electrónicos basados en [la especificación oficial](ht
 ## Transpilación a JavaScript
 
 `npm install` y `npx tsc`.
+
+## Ejecutar Prueba
+
+Prueba para factura electrónica:
+
+`npx tsc && node test/parseXmlString.js facturaElectronica.xml`
