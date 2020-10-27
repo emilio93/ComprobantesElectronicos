@@ -10,6 +10,4 @@ Modelos de Comprobantes Electrónicos basados en [la especificación oficial](ht
 
 Prueba para factura electrónica:
 
-Colocar una factura electrónica en `sample/sample.xml`
-
-`npm test`
+`npm run test`
