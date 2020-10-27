@@ -10,4 +10,6 @@ Modelos de Comprobantes Electrónicos basados en [la especificación oficial](ht
 
 Prueba para factura electrónica:
 
-`npx tsc && node test/parseXmlString.js facturaElectronica.xml`
+Colocar una factura electrónica en `sample/sample.xml`
+
+`npm test`
