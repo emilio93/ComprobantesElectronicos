@@ -40,7 +40,7 @@ export class Identificacion {
 
   constructor(identificacion) {
     if (identificacion === null) return;
-    this.Numero = identificacion.Numero[0];
-    this.Tipo = identificacion.Tipo[0];
+    this.Numero = identificacion.Numero?.[0];
+    this.Tipo = identificacion.Tipo?.[0];
   }
 }

@@ -77,13 +77,13 @@ export abstract class Remisor {
   CorreoElectronico: string;
 
   constructor(remisor) {
-    this.Identificacion = new Identificacion(typeof remisor.Identificacion !== 'undefined' ? remisor.Identificacion[0] : null);
-    this.Fax = new Fax(typeof remisor.Fax !== 'undefined' ? remisor.Fax[0] : null);
-    this.Telefono = new Telefono(remisor.Telefono[0]);
-    this.Ubicacion = new Ubicacion(typeof remisor.Ubicacion !== 'undefined' ? remisor.Ubicacion[0] : null);
+    this.Identificacion = new Identificacion(remisor?.Identificacion?.[0]);
+    this.Fax = new Fax(remisor?.Fax?.[0]);
+    this.Telefono = new Telefono(remisor?.Telefono?.[0]);
+    this.Ubicacion = new Ubicacion(remisor?.Ubicacion?.[0]);
 
-    this.CorreoElectronico = remisor.CorreoElectronico[0];
-    this.Nombre = remisor.Nombre[0];
-    this.NombreComercial = typeof remisor.NombreComercial !== 'undefined' ? remisor.NombreComercial[0] : null;
+    this.CorreoElectronico = remisor.CorreoElectronico?.[0];
+    this.Nombre = remisor.Nombre?.[0];
+    this.NombreComercial = remisor?.NombreComercial?.[0];
   }
 }

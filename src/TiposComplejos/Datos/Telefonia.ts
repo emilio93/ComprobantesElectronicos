@@ -33,7 +33,7 @@ export class Telefonia {
 
   constructor(telefonia) {
     if (telefonia === null) return;
-    this.CodigoPais = telefonia.CodigoPais[0];
-    this.NumTelefono = telefonia.NumTelefono[0];
+    this.CodigoPais = telefonia?.CodigoPais?.[0];
+    this.NumTelefono = telefonia?.NumTelefono?.[0];
   }
 }
