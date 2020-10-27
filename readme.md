@@ -4,7 +4,7 @@ Modelos de Comprobantes Electrónicos basados en [la especificación oficial](ht
 
 ## Transpilación a JavaScript
 
-`npm install` y `npx tsc`.
+`npm install` y `npm run build`.
 
 ## Ejecutar Prueba
 
