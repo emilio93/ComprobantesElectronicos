@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx tsc && node dist/test/parseXmlString.js sample/sample.xml"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "babel-jest": "^26.6.1",
+    "jest": "^26.6.1",
+    "ts-node": "^9.0.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
