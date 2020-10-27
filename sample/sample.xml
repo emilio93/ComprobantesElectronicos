@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacturaElectronica xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica_V.4.3.xsd"
+  xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Clave>50630072000310200722303600004010000001234100000000</Clave>
+  <CodigoActividad>521101</CodigoActividad>
+  <NumeroConsecutivo>03600004010000001234</NumeroConsecutivo>
+  <FechaEmision>2020-07-30T12:30:02</FechaEmision>
+  <Emisor>
+    <Nombre>CORPORACION SUPERMERCADOS UNIDOS S.R.L.</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3102007223</Numero>
+    </Identificacion>
+    <NombreComercial>MXM GRANJA</NombreComercial>
+    <Ubicacion>
+      <Provincia>1</Provincia>
+      <Canton>09</Canton>
+      <Distrito>03</Distrito>
+      <OtrasSenas>Parque Empresarial Forum II</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>25828400</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>dtecr.prod@einvoicing.signature-cloud.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>Pablo Perez</Nombre>
+    <Identificacion>
+      <Tipo>01</Tipo>
+      <Numero>101230456</Numero>
+    </Identificacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>88888888</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>correo@proveedor.com</CorreoElectronico>
+  </Receptor>
+  <CondicionVenta>02</CondicionVenta>
+  <PlazoCredito>0</PlazoCredito>
+  <MedioPago>02</MedioPago>
+  <DetalleServicio>
+    <LineaDetalle>
+      <NumeroLinea>1</NumeroLinea>
+      <CodigoComercial>
+        <Tipo>03</Tipo>
+        <Codigo>0744100571010</Codigo>
+      </CodigoComercial>
+      <Cantidad>1</Cantidad>
+      <UnidadMedida>Unid</UnidadMedida>
+      <Detalle>MANIPRO 500G</Detalle>
+      <PrecioUnitario>2168.14159</PrecioUnitario>
+      <MontoTotal>2168.14159</MontoTotal>
+      <SubTotal>2168.14159</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>08</CodigoTarifa>
+        <Tarifa>13.00</Tarifa>
+        <Monto>281.85841</Monto>
+      </Impuesto>
+      <ImpuestoNeto>281.85841</ImpuestoNeto>
+      <MontoTotalLinea>2450.00000</MontoTotalLinea>
+    </LineaDetalle>
+    <LineaDetalle>
+      <NumeroLinea>2</NumeroLinea>
+      <CodigoComercial>
+        <Tipo>03</Tipo>
+        <Codigo>0000000007483</Codigo>
+      </CodigoComercial>
+      <Cantidad>0.78</Cantidad>
+      <UnidadMedida>kg</UnidadMedida>
+      <Detalle>BANANO K</Detalle>
+      <PrecioUnitario>534.39959</PrecioUnitario>
+      <MontoTotal>416.83168</MontoTotal>
+      <SubTotal>416.83168</SubTotal>
+      <Impuesto>
+        <Codigo>01</Codigo>
+        <CodigoTarifa>02</CodigoTarifa>
+        <Tarifa>1.00</Tarifa>
+        <Monto>4.16832</Monto>
+      </Impuesto>
+      <ImpuestoNeto>4.16832</ImpuestoNeto>
+      <MontoTotalLinea>421.00000</MontoTotalLinea>
+    </LineaDetalle>
+  </DetalleServicio>
+  <ResumenFactura>
+    <TotalServGravados>0.00000</TotalServGravados>
+    <TotalServExentos>0.00000</TotalServExentos>
+    <TotalServExonerado>0.00000</TotalServExonerado>
+    <TotalMercanciasGravadas>2584.97327</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00000</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00000</TotalMercExonerada>
+    <TotalGravado>2584.97327</TotalGravado>
+    <TotalExento>0.00000</TotalExento>
+    <TotalExonerado>0.00000</TotalExonerado>
+    <TotalVenta>2584.97327</TotalVenta>
+    <TotalDescuentos>0.00000</TotalDescuentos>
+    <TotalVentaNeta>2584.97327</TotalVentaNeta>
+    <TotalImpuesto>286.02673</TotalImpuesto>
+    <TotalComprobante>2871.00000</TotalComprobante>
+  </ResumenFactura>
+</FacturaElectronica>
