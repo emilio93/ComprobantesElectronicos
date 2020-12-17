@@ -89,4 +89,15 @@ export class Impuesto {
    *                Este campo será de condición obligatoria cuando la venta tenga alguna exoneración.
    */
   Exoneracion: Exoneracion;
+
+  constructor(impuesto) {
+    if (impuesto === null) return;
+    this.Codigo = impuesto?.Codigo?.[0];
+    this.CodigoTarifa = impuesto?.CodigoTarifa?.[0];
+    this.Tarifa = impuesto?.Tarifa?.[0];
+    this.FactorIVA = impuesto?.FactorIVA?.[0];
+    this.Monto = impuesto?.Monto?.[0];
+    this.MontoExportacion = impuesto?.MontoExportacion?.[0];
+    this.Exoneracion = new Exoneracion(impuesto?.Exoneracion?.[0]);
+  }
 }

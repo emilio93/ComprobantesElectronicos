@@ -71,4 +71,13 @@ export class Exoneracion {
    */
   MontoExoneracion: string;
 
+  constructor(exoneracion) {
+    if (exoneracion === null) return;
+    this.Tipodocumento = exoneracion?.Tipodocumento?.[0];
+    this.NumeroDocumento = exoneracion?.NumeroDocumento?.[0];
+    this.NombreInstitucion = exoneracion?.NombreInstitucion?.[0];
+    this.FechaEmision = exoneracion?.FechaEmision?.[0];
+    this.PorcentajeExoneracion = exoneracion?.PorcentajeExoneracion?.[0];
+    this.MontoExoneracion = exoneracion?.MontoExoneracion?.[0];
+  }
 }

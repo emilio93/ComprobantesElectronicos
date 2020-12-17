@@ -32,4 +32,10 @@ export class Descuento {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “monto de descuentos concedidos”
    */
   NaturalezaDescuento: string;
+
+  constructor(descuento) {
+    if (descuento === null) return;
+    this.MontoDescuento = descuento?.MontoDescuento?.[0];
+    this.NaturalezaDescuento = descuento?.NaturalezaDescuento?.[0];
+  }
 }

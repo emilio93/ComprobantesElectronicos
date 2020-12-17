@@ -53,7 +53,7 @@ export class LineaDetalle {
    * Tamaño:        16,3
    * Descripcion:   Es un número decimal compuesto por 13 enteros y 3 decimales.
    */
-  Cantidad : number;
+  Cantidad: number;
 
   /**
    * Nombre:        Unidad de Medida
@@ -61,7 +61,7 @@ export class LineaDetalle {
    * Tamaño:        15
    * Descripcion:   Ver nota 15
    */
-  UnidadMedida : number;
+  UnidadMedida: number;
 
   /**
    * Nombre:        Unidad de Medida Comercial
@@ -69,7 +69,7 @@ export class LineaDetalle {
    * Tamaño:        20
    * Descripcion:   Nodo utilizado para indicar una unidad de medida que nace del propio giro comercial del establecimiento, no es una cantidad estandarizada de una determinada magnitud física, definida y adoptada por convención o por ley ejemplo  "1 Tarima"
    */
-  UnidadMedidaComercial : number;
+  UnidadMedidaComercial: number;
 
   /**
    * Nombre:        Detalle de la mercancía transferida o servicio prestado
@@ -87,7 +87,7 @@ export class LineaDetalle {
    * Tamaño:        18,5
    * Descripcion:   Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  PrecioUnitario : number;
+  PrecioUnitario: number;
 
   /**
    * Nombre:        Monto total
@@ -96,7 +96,7 @@ export class LineaDetalle {
    * Descripcion:   Se obtiene de la multiplicación del campo “cantidad” por el campo “precio unitario”.
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  MontoTotal : number;
+  MontoTotal: number;
 
   /**
    * Nombre:
@@ -113,7 +113,7 @@ export class LineaDetalle {
    * Descripcion:   Se obtiene de la resta del campo “monto total” menos “monto de descuento concedido”.
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  SubTotal : number;
+  SubTotal: number;
 
   /**
    * Nombre:        Base imponible especial
@@ -122,7 +122,7 @@ export class LineaDetalle {
    * Descripcion:   Se convierteen obligatorio cuando se seleccione en el campo “Código del impuesto” 07.
    *                No es necesario su visualisacion para la representación grafica.
    */
-  BaseImponible : number;
+  BaseImponible: number;
 
   /**
    * Nombre:
@@ -143,7 +143,7 @@ export class LineaDetalle {
    *                Este monto se obtiene al restar el campo  “Monto del Impuesto” menos “Monto del Impuesto Exonerado”.
    *                Escaso de estar exonerado el 100 % se debe de colocar “0”.
    */
-  ImpuestoNeto : number;
+  ImpuestoNeto: number;
 
   /**
    * Nombre:        Total por línea de detalle
@@ -154,5 +154,25 @@ export class LineaDetalle {
    *                  -Cuando posee una exoneración, se obtiene de la sumatoria de los campos  “Subtotal”, “Impuesto Neto”.
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  MontoTotalLinea : number;
+  MontoTotalLinea: number;
+
+  constructor(lineaDetalle) {
+    if (lineaDetalle === null) return;
+    this.NumeroLinea = lineaDetalle?.NumeroLinea?.[0];
+    this.PartidaArancelaria = lineaDetalle?.PartidaArancelaria?.[0];
+    this.Codigo = lineaDetalle?.Codigo?.[0];
+    this.CodigoComercial = new CodigoComercial(lineaDetalle?.CodigoComercial?.[0]);
+    this.Cantidad = lineaDetalle?.Cantidad?.[0];
+    this.UnidadMedida = lineaDetalle?.UnidadMedida?.[0];
+    this.UnidadMedidaComercial = lineaDetalle?.UnidadMedidaComercial?.[0];
+    this.Detalle = lineaDetalle?.Detalle?.[0];
+    this.PrecioUnitario = lineaDetalle?.PrecioUnitario?.[0];
+    this.MontoTotal = lineaDetalle?.MontoTotal?.[0];
+    this.Descuento = lineaDetalle?.Descuento?.[0];
+    this.SubTotal = lineaDetalle?.SubTotal?.[0];
+    this.BaseImponible = lineaDetalle?.BaseImponible?.[0];
+    this.Impuesto = new Impuesto(lineaDetalle?.Impuesto?.[0]);
+    this.ImpuestoNeto = lineaDetalle?.ImpuestoNeto?.[0];
+    this.MontoTotalLinea = lineaDetalle?.MontoTotalLinea?.[0];
+  }
 }

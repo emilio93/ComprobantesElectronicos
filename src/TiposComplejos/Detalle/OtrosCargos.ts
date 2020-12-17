@@ -63,5 +63,15 @@ export class OtrosCargos {
    * Tamaño:        18,5
    * Descripcion:   Monto total del cargo.
    */
-  MontoCargo  : number;
+  MontoCargo : number;
+
+  constructor(otrosCargos) {
+    if (otrosCargos === null) return;
+    this.TipoDocumento = otrosCargos?.TipoDocumento?.[0];
+    this.NumeroIdentidadTercero = otrosCargos?.NumeroIdentidadTercero?.[0];
+    this.NombreTercero = otrosCargos?.NombreTercero?.[0];
+    this.Detalle = otrosCargos?.Detalle?.[0];
+    this.Porcentaje = otrosCargos?.Porcentaje?.[0];
+    this.MontoCargo = otrosCargos?.MontoCargo?.[0];
+  }
 }
