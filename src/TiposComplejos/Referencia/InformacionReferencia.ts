@@ -94,4 +94,13 @@ export class InformacionReferencia {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya  información  en  el  campo  “Tipo  de documento de referencia” excepto cuando se utilice el código 13
    */
   Razon: string;
+
+  constructor(informacionReferencia) {
+    if (informacionReferencia === null) return;
+    this.TipoDoc = informacionReferencia?.TipoDoc?.[0];
+    this.Numero = informacionReferencia?.Numero?.[0];
+    this.FechaEmision = informacionReferencia?.FechaEmision?.[0];
+    this.Codigo = informacionReferencia?.Codigo?.[0];
+    this.Razon = informacionReferencia?.Razon?.[0];
+  }
 }

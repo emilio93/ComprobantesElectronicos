@@ -12,9 +12,12 @@ import { readFile } from "fs/promises";
 
 import { Emisor } from './TiposComplejos/Datos/Emisor';
 import { Receptor } from './TiposComplejos/Datos/Receptor';
+
 import { DetalleServicio } from './TiposComplejos/Detalle/DetalleServicio';
 import { ResumenFactura } from './TiposComplejos/Resumen/ResumenFactura'
 import { OtrosCargos } from './TiposComplejos/Detalle/OtrosCargos'
+
+import { InformacionReferencia } from './TiposComplejos/Referencia/InformacionReferencia'
 
 import { Parser } from 'xml2js';
 import { ComprobanteElectronicoFactory } from './ComprobantesElectronicos/ComprobanteElectronicoFactory';
@@ -23,11 +26,14 @@ export abstract class ComprobanteElectronico {
 
   Datos: Datos;
   Detalle: Detalle;
+  Referencia: Referencia;
   Resumen: Resumen;
 
   constructor(comprobante) {
     this.Datos = new Datos(comprobante);
     this.Detalle = new Detalle(comprobante);
+    this.Resumen = new Resumen(comprobante);
+    this.Referencia = new Referencia(comprobante);
   }
 
   static async parseXmlString(xmlString) {
@@ -211,16 +217,41 @@ export class Resumen {
    */
   ResumenFactura: ResumenFactura;
 
+  constructor(comprobante) {
+    this.ResumenFactura = new ResumenFactura(comprobante?.ResumenFactura?.[0]);
+  }
 }
 
 // d)Información de referencia:
 //      Se deben detallar la razón y/o los documentos de referencia, por ejemplo se debe identificar la factura que se está modificando con una nota de crédito o de débito; y en el caso de comprobantes electrónicos que sustituyen comprobantes físicos emitidos por contingencia, se debe hacer referencia al comprobante provisional.
-export class Informacion {
+export class Referencia {
+  /**
+ * Nombre:        Información de Referencia
+ * Tipo:          ComplexType
+ * Tamaño:
+ * Descripcion:   Tipo complejo que representa el detalle de la referencia.
+ */
+  InformacionReferencia: InformacionReferencia;
+
+  constructor(comprobante) {
+    this.InformacionReferencia = new InformacionReferencia(comprobante?.InformacionReferencia?.[0]);
+  }
 }
 
 // e)Otros:
 //      comprende la información requerida para las relaciones de comercio electrónico entre las partes, que no contravenga lo establecido en la presente resolución.
 export class Otros {
+  /**
+   * Nombre:        Otros
+   * Tipo:          ComplexType
+   * Tamaño:
+   * Descripcion:   Tipo complejo que agrupa varias definiciones de "Otros.
+   */
+  Otros: Otros;
+
+  constructor(comprobante) {
+    this.Otros = new Otros(comprobante?.InformacionReferencia?.[0]);
+  }
 }
 
 // f)Mecanismo de seguridad:
