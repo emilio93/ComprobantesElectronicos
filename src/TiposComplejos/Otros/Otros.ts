@@ -38,4 +38,10 @@ export class Otros {
    * Descripcion:   Elemento opcional que se puede utilizar para almacenar contenido estructurado.
    */
   OtroContenido: string;
+
+  constructor(otros) {
+    if (otros === null) return;
+    this.OtroTexto = otros?.OtroTexto?.[0];
+    this.OtroContenido = otros?.OtroContenido?.[0];
+  }
 }
