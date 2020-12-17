@@ -8,6 +8,8 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+import { readFile } from "fs/promises";
+
 import { Emisor } from './TiposComplejos/Datos/Emisor';
 import { Receptor } from './TiposComplejos/Datos/Receptor';
 import { DetalleServicio } from './TiposComplejos/Detalle/DetalleServicio';
@@ -25,8 +27,7 @@ export abstract class ComprobanteElectronico {
 
   constructor(comprobante) {
     this.Datos = new Datos(comprobante);
-    this.Detalle = new Detalle();
-    this.Resumen = new Resumen();
+    this.Detalle = new Detalle(comprobante);
   }
 
   static async parseXmlString(xmlString) {
@@ -41,11 +42,14 @@ export abstract class ComprobanteElectronico {
     let factory = new ComprobanteElectronicoFactory();
     let Comprobante = factory.create(parsedXml);
 
-
     return Comprobante;
   }
 
-  static parseXmlFile(xmlFile) {
+  static async parseXmlFile(xmlFile) {
+    const xml = await readFile(xmlFile);
+    const xmlString = xml.toString();
+    const fe = await ComprobanteElectronico.parseXmlString(xmlString);
+    return fe;
   }
 
   abstract validarCondicionCampos(): boolean;
@@ -189,6 +193,11 @@ export class Detalle {
    * Descripcion:   Tipo complejo.Se puede incluir un máximo de 15 repeticiones, cuando se posean otros cargos que forman parte del costo total de la línea de detalle.
    */
   OtrosCargos: OtrosCargos;
+
+  constructor(comprobante) {
+    this.DetalleServicio = new DetalleServicio(comprobante?.DetalleServicio?.[0]);
+    this.OtrosCargos = new OtrosCargos(comprobante?.OtrosCargos?.[0]);
+  }
 }
 
 // c)Resumen del comprobante /Total de comprobante:
