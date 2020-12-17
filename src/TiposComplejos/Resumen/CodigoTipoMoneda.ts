@@ -22,6 +22,8 @@ export class CodigoTipoMoneda {
    * Descripcion:   Ver nota 13 y nota 13.1
    */
   CodigoMoneda: string;
+  // 13/ Cuando  el  comprobante  electrónico  se  exprese  en  moneda  extranjera  debe  indicarse  la  moneda  en  que  se realizó  la  operación,  para  efectos  de  impresión  y  visualización  se  debe  mostrar  del Código de la moneda.
+  // 13.1/ El Código a utilizar en el nodo "Código de la moneda“ esel siguiente: Ver documento denominado “Codigodemoneda_V4.3”.
 
   /**
    * Nombre:        Tipo de cambio
@@ -30,4 +32,10 @@ export class CodigoTipoMoneda {
    * Descripcion:   Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
   TipoCambio: number;
+
+  constructor(codigoTipoFactura) {
+    if (codigoTipoFactura === null) return;
+    this.CodigoMoneda = codigoTipoFactura?.CodigoMoneda?.[0];
+    this.TipoCambio = codigoTipoFactura?.TipoCambio?.[0];
+  }
 }

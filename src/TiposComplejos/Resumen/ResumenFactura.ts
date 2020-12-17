@@ -8,6 +8,8 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+import { CodigoTipoMoneda } from "./CodigoTipoMoneda";
+
 /**
  * Nombre:        Resumen de la Factura
  * Tipo:          ComplexType
@@ -15,6 +17,15 @@
  * Descripcion:   Tipo complejo que representa el resumen de la factura.
  */
 export class ResumenFactura {
+
+  /**
+   * Nombre:        Código y Tipo de Moneda
+   * Tipo:          ComplexType
+   * Tamaño:
+   * Descripcion:   Se convierte en obligatorio cuando el comprobante electrónico se exprese en moneda extranjera.
+   */
+  CodigoTipoMoneda: CodigoTipoMoneda;
+
   /**
    * Nombre:        Total  servicios  gravados con IV
    * Tipo:          Decimal
@@ -163,4 +174,25 @@ export class ResumenFactura {
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
   TotalComprobante: number;
+
+  constructor(resumenFactura) {
+    if (resumenFactura === null) return;
+    this.CodigoTipoMoneda = new CodigoTipoMoneda(resumenFactura?.CodigoTipoMoneda?.[0]);
+    this.TotalServGravados = resumenFactura?.TotalServGravados?.[0];
+    this.TotalServExentos = resumenFactura?.TotalServExentos?.[0];
+    this.TotalServExonerado = resumenFactura?.TotalServExonerado?.[0];
+    this.TotalMercanciasGravadas = resumenFactura?.TotalMercanciasGravadas?.[0];
+    this.TotalMercanciasExentas = resumenFactura?.TotalMercanciasExentas?.[0];
+    this.TotalMercExonerada = resumenFactura?.TotalMercExonerada?.[0];
+    this.TotalGravado = resumenFactura?.TotalGravado?.[0];
+    this.TotalExento = resumenFactura?.TotalExento?.[0];
+    this.TotalExonerado = resumenFactura?.TotalExonerado?.[0];
+    this.TotalVenta = resumenFactura?.TotalVenta?.[0];
+    this.TotalDescuentos = resumenFactura?.TotalDescuentos?.[0];
+    this.TotalVentaNeta = resumenFactura?.TotalVentaNeta?.[0];
+    this.TotalImpuesto = resumenFactura?.TotalImpuesto?.[0];
+    this.TotalIVADevuelto = resumenFactura?.TotalIVADevuelto?.[0];
+    this.TotalOtrosCargos = resumenFactura?.TotalOtrosCargos?.[0];
+    this.TotalComprobante = resumenFactura?.TotalComprobante?.[0];
+  }
 }
