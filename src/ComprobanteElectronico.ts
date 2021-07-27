@@ -42,8 +42,7 @@ export abstract class ComprobanteElectronico {
     try {
       parsedXml = await parser.parseStringPromise(xmlString);
     } catch (error) {
-      console.error(error);
-      return null;
+      throw error;
     }
     let factory = new ComprobanteElectronicoFactory();
     let Comprobante = factory.create(parsedXml);
