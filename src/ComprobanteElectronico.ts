@@ -36,7 +36,7 @@ export abstract class ComprobanteElectronico {
     this.Referencia = new Referencia(comprobante);
   }
 
-  static async parseXmlString(xmlString) {
+  static async parseXmlString(xmlString) : Promise<ComprobanteElectronico> {
     let parser = new Parser();
     let parsedXml;
     try {
@@ -51,7 +51,7 @@ export abstract class ComprobanteElectronico {
     return Comprobante;
   }
 
-  static async parseXmlFile(xmlFile) {
+  static async parseXmlFile(xmlFile) : Promise<ComprobanteElectronico> {
     const xml = await readFile(xmlFile);
     const xmlString = xml.toString();
     const fe = await ComprobanteElectronico.parseXmlString(xmlString);

@@ -13,7 +13,7 @@ import { ComprobanteElectronico, FacturaElectronica } from "../ComprobanteElectr
 
 export class ComprobanteElectronicoFactory {
   create(parsedXml: any): ComprobanteElectronico {
-    let Comprobante = null;
+    let Comprobante : ComprobanteElectronico = null;
     if (typeof parsedXml?.FacturaElectronica === 'object' && parsedXml?.FacturaElectronica !== null) {
       Comprobante = new FacturaElectronica(parsedXml.FacturaElectronica);
     }
