@@ -1,5 +1,6 @@
 import { readFile } from "fs/promises";
 
+
 import { Emisor } from './TiposComplejos/Datos/Emisor';
 import { Receptor } from './TiposComplejos/Datos/Receptor';
 
@@ -249,13 +250,4 @@ export class Otros {
 export class Seguridad {
 }
 
-export class FacturaElectronica extends ComprobanteElectronico {
-
-  constructor(parsedXml: Object) {
-    super(parsedXml);
-  }
-
-  validarCondicionCampos(): boolean {
-    return true;
-  }
-}
+export { FacturaElectronica } from "./ComprobantesElectronicos/FacturaElectronica";
