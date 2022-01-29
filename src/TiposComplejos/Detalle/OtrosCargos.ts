@@ -1,3 +1,12 @@
+export type OtrosCargosXML = {
+  TipoDocumento: Array<number>;
+  NumeroIdentidadTercero: Array<number>;
+  NombreTercero: Array<string>;
+  Detalle: Array<string>;
+  Porcentaje: Array<number>;
+  MontoCargo: Array<number>;
+};
+
 export class OtrosCargos {
   /**
    * Nombre:        Tipo de documento
@@ -5,7 +14,7 @@ export class OtrosCargos {
    * Tamaño:        2
    * Descripcion:   Ver nota 16
    */
-  TipoDocumento: number;
+  TipoDocumento?: number;
 
   /**
    * Nombre:        Número de cédula física/ jurídica/NITE/DIMEX del emisor
@@ -21,7 +30,7 @@ export class OtrosCargos {
    *
    * Footnote:       5 Se entenderá como tercero el contribuyente que vende o presta el servicio o mercancía que se está cobrando.
    */
-  NumeroIdentidadTercero: number;
+  NumeroIdentidadTercero?: number;
 
   /**
    * Nombre:        Nombre o razón social del Receptor
@@ -29,7 +38,7 @@ export class OtrosCargos {
    * Tamaño:        100
    * Descripcion:   Este campo será de condición obligatoria, cuando se seleccione en “tipo de documento” el código 04.
    */
-  NombreTercero: string;
+  NombreTercero?: string;
 
   /**
    * Nombre:        Detalle de otros Cargos.
@@ -37,7 +46,7 @@ export class OtrosCargos {
    * Tamaño:        160
    * Descripcion:   Se debe de indicar la descripción del cargo.
    */
-  Detalle: string;
+  Detalle?: string;
 
   /**
    * Nombre:        Porcentaje
@@ -45,7 +54,7 @@ export class OtrosCargos {
    * Tamaño:        9,5
    * Descripcion:   En el caso que el cargo posea un porcentaje o monto para su cálculo se debe de indicar el mismo.
    */
-  Porcentaje : number;
+  Porcentaje?: number;
 
   /**
    * Nombre:        Monto del cargo
@@ -53,15 +62,15 @@ export class OtrosCargos {
    * Tamaño:        18,5
    * Descripcion:   Monto total del cargo.
    */
-  MontoCargo : number;
+  MontoCargo?: number;
 
-  constructor(otrosCargos) {
-    if (otrosCargos === null) return;
-    this.TipoDocumento = otrosCargos?.TipoDocumento?.[0];
-    this.NumeroIdentidadTercero = otrosCargos?.NumeroIdentidadTercero?.[0];
-    this.NombreTercero = otrosCargos?.NombreTercero?.[0];
-    this.Detalle = otrosCargos?.Detalle?.[0];
-    this.Porcentaje = otrosCargos?.Porcentaje?.[0];
-    this.MontoCargo = otrosCargos?.MontoCargo?.[0];
+  constructor(otrosCargos: OtrosCargosXML) {
+    if (!otrosCargos) return;
+    this.TipoDocumento = otrosCargos.TipoDocumento?.[0];
+    this.NumeroIdentidadTercero = otrosCargos.NumeroIdentidadTercero?.[0];
+    this.NombreTercero = otrosCargos.NombreTercero?.[0];
+    this.Detalle = otrosCargos.Detalle?.[0];
+    this.Porcentaje = otrosCargos.Porcentaje?.[0];
+    this.MontoCargo = otrosCargos.MontoCargo?.[0];
   }
 }

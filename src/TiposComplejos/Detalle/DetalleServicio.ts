@@ -1,11 +1,15 @@
-import { LineaDetalle } from './LineaDetalle'
+import { LineaDetalle, LineaDetalleXML } from "./LineaDetalle";
 
-  /**
-   * Nombre:        Detalle de la mercancia o servicio prestado
-   * Tipo:          ComplexType
-   * Tamaño:
-   * Descripcion:   Tipo complejo que agrupa las líneas del detalle.Es de carácter obligatorio cuando el comprobante incorpore al menos una línea de un producto o servicio.
-   */
+export type DetalleServicioXML = {
+  LineaDetalle: Array<LineaDetalleXML>;
+};
+
+/**
+ * Nombre:        Detalle de la mercancia o servicio prestado
+ * Tipo:          ComplexType
+ * Tamaño:
+ * Descripcion:   Tipo complejo que agrupa las líneas del detalle.Es de carácter obligatorio cuando el comprobante incorpore al menos una línea de un producto o servicio.
+ */
 export class DetalleServicio {
   /**
    * Nombre:        Línea de detalle
@@ -13,14 +17,13 @@ export class DetalleServicio {
    * Tamaño:
    * Descripcion:   Tipo complejo que representa cada línea del detalle de la mercancía o servicio prestado.
    */
-  LineaDetalle: LineaDetalle[];
+  LineaDetalle?: Array<LineaDetalle>;
 
-
-  constructor(detalleServicio) {
-    if (detalleServicio === null) return;
+  constructor(detalleServicio: DetalleServicioXML) {
+    if (!detalleServicio) return;
     this.LineaDetalle = [];
-    detalleServicio?.LineaDetalle?.forEach(lineaDetalle => {
-      this.LineaDetalle.push(new LineaDetalle(lineaDetalle));
+    detalleServicio.LineaDetalle.forEach((lineaDetalle: LineaDetalleXML) => {
+      this.LineaDetalle?.push(new LineaDetalle(lineaDetalle));
     });
   }
 }

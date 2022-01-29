@@ -1,3 +1,12 @@
+export type ExoneracionXML = {
+  Tipodocumento: Array<string>;
+  NumeroDocumento: Array<string>;
+  NombreInstitucion: Array<string>;
+  FechaEmision: Array<string>;
+  PorcentajeExoneracion: Array<string>;
+  MontoExoneracion: Array<string>;
+};
+
 /**
  * Nombre:        Información de exoneración
  * Tipo:          ComplexType
@@ -13,7 +22,7 @@ export class Exoneracion {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver nota 10.1 y 7
    */
-  Tipodocumento: string;
+  Tipodocumento?: string;
 
   /**
    * Nombre:        Número de documento de exoneración o de autorización
@@ -22,7 +31,7 @@ export class Exoneracion {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de documento de exoneración o de autorización”
    *                Debe de indicarse tal y como se encuentra en el documento otorgado por la institución incluyendo los guiones.
    */
-  NumeroDocumento: string;
+  NumeroDocumento?: string;
 
   /**
    * Nombre:        Nombre  de  institución  o dependencia  que  emitió la exoneración
@@ -30,7 +39,7 @@ export class Exoneracion {
    * Tamaño:        160
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de documento de exoneración o de autorización”
    */
-  NombreInstitucion: string;
+  NombreInstitucion?: string;
 
   /**
    * Nombre:        Fecha de emisión del documento de exoneración o de autorización
@@ -39,7 +48,7 @@ export class Exoneracion {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de documento de exoneración o de autorización”.
    *                Tipo de dato de fecha y hora, basado en  el  estándar RFC3339 sección 5.6, tipo “date-time”.Formato: YYYY-MM-DDThh:mi:ss[Z|(+|-)hh:mm]Ejemplo: 2016-09-26T13:00:00+06:00
    */
-  FechaEmision: string;
+  FechaEmision?: string;
 
   /**
    * Nombre:        Porcentaje de la Exoneración
@@ -48,7 +57,7 @@ export class Exoneracion {
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de exoneración”.
    *                Debe de indicarse el porcentaje otorgado de exoneración.
    */
-  PorcentajeExoneracion: string;
+  PorcentajeExoneracion?: string;
 
   /**
    * Nombre:        Monto del Impuesto Exonerado
@@ -59,15 +68,15 @@ export class Exoneracion {
    *                Dicho monto se obtiene de la multiplicación del campo “porcentaje de la exoneración” por el campo “Monto del Impuesto”.
    * Footnote:      4 Apartir del 01 de julio del 2020 la fórmulade cálculodel campo denominado “Monto de Impuesto exonerado” se modifica de la siguiente manera“Se obtiene de la multiplicación del campo “porcentaje de la exoneración” por el campo “Subtotal”.
    */
-  MontoExoneracion: string;
+  MontoExoneracion?: string;
 
-  constructor(exoneracion) {
-    if (exoneracion === null) return;
-    this.Tipodocumento = exoneracion?.Tipodocumento?.[0];
-    this.NumeroDocumento = exoneracion?.NumeroDocumento?.[0];
-    this.NombreInstitucion = exoneracion?.NombreInstitucion?.[0];
-    this.FechaEmision = exoneracion?.FechaEmision?.[0];
-    this.PorcentajeExoneracion = exoneracion?.PorcentajeExoneracion?.[0];
-    this.MontoExoneracion = exoneracion?.MontoExoneracion?.[0];
+  constructor(exoneracion: ExoneracionXML) {
+    if (!exoneracion) return;
+    this.Tipodocumento = exoneracion.Tipodocumento?.[0];
+    this.NumeroDocumento = exoneracion.NumeroDocumento?.[0];
+    this.NombreInstitucion = exoneracion.NombreInstitucion?.[0];
+    this.FechaEmision = exoneracion.FechaEmision?.[0];
+    this.PorcentajeExoneracion = exoneracion.PorcentajeExoneracion?.[0];
+    this.MontoExoneracion = exoneracion.MontoExoneracion?.[0];
   }
 }

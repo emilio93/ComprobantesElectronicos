@@ -1,4 +1,4 @@
-import { Remisor } from './Remisor'
+import { Remisor, RemisorXML } from "../../TiposComplejos/Datos/Remisor";
 
 /**
  * Nombre:        Emisor del comprobante
@@ -7,7 +7,7 @@ import { Remisor } from './Remisor'
  * Descripcion:   Tipo complejo que contiene los datos del emisor del comprobante
  */
 export class Emisor extends Remisor {
-  constructor(emisor) {
+  constructor(emisor: RemisorXML) {
     super(emisor);
   }
 }

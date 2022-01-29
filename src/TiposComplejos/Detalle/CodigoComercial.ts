@@ -1,3 +1,8 @@
+export type CodigoComercialXML = {
+  Tipo: Array<string>;
+  Codigo: Array<string>;
+};
+
 /**
  * Nombre:        CodigoComercial
  * Tipo:          String
@@ -13,7 +18,7 @@ export class CodigoComercial {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver nota 12
    */
-  Tipo: string;
+  Tipo?: string;
   // 12/ La codificación a utilizar en el campo “Tipo de Código de producto/servicio” es la siguiente, sin embargo para efectos deimpresión y visualización se debe mostrar la descripción del nombre:
   // Tipo de Código  de producto/servicio          Código
   // Código del producto del vendedor              01
@@ -28,11 +33,11 @@ export class CodigoComercial {
    * Tamaño:        20
    * Descripcion:
    */
-  Codigo: string;
+  Codigo?: string;
 
-  constructor(codigoComercial) {
-    if (codigoComercial === null) return;
-    this.Tipo = codigoComercial?.Tipo?.[0];
-    this.Codigo = codigoComercial?.Codigo?.[0];
+  constructor(codigoComercial: CodigoComercialXML) {
+    if (!codigoComercial) return;
+    this.Tipo = codigoComercial.Tipo?.[0];
+    this.Codigo = codigoComercial.Codigo?.[0];
   }
 }

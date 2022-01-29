@@ -1,4 +1,4 @@
-import { Telefonia } from './Telefonia'
+import { Telefonia, TelefoniaXML } from "./Telefonia";
 
 /**
  * Nombre:
@@ -7,7 +7,7 @@ import { Telefonia } from './Telefonia'
  * Descripcion:   Tipo complejo para un número telefónico. Es opcional.
  */
 export class Telefono extends Telefonia {
-  constructor(telefono) {
+  constructor(telefono: TelefoniaXML) {
     super(telefono);
   }
 }

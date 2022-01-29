@@ -1,3 +1,8 @@
+export type DescuentoXML = {
+  MontoDescuento: Array<string>;
+  NaturalezaDescuento: Array<string>;
+};
+
 /**
  * Nombre:
  * Tipo:          ComplexType
@@ -13,7 +18,7 @@ export class Descuento {
    * Descripcion:   Este campo será  de condición obligatoria, cuando exista un descuento.
    *                Es un número decimal compuesto por 13 enteros y 5 decimales.
    */
-  MontoDescuento: string;
+  MontoDescuento?: string;
 
   /**
    * Nombre:        Naturaleza del descuento
@@ -21,11 +26,11 @@ export class Descuento {
    * Tamaño:        80
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya información en el campo “monto de descuentos concedidos”
    */
-  NaturalezaDescuento: string;
+  NaturalezaDescuento?: string;
 
-  constructor(descuento) {
-    if (descuento === null) return;
-    this.MontoDescuento = descuento?.MontoDescuento?.[0];
-    this.NaturalezaDescuento = descuento?.NaturalezaDescuento?.[0];
+  constructor(descuento: DescuentoXML) {
+    if (!descuento) return;
+    this.MontoDescuento = descuento.MontoDescuento?.[0];
+    this.NaturalezaDescuento = descuento.NaturalezaDescuento?.[0];
   }
 }

@@ -1,7 +1,18 @@
-import { Identificacion } from './Identificacion'
-import { Ubicacion } from './Ubicacion'
-import { Telefono } from './Telefono'
-import { Fax } from './Fax'
+import { Identificacion, IdentificacionXML } from "./Identificacion";
+import { Ubicacion, UbicacionXML } from "./Ubicacion";
+import { Telefono } from "./Telefono";
+import { Fax } from "./Fax";
+import { TelefoniaXML } from "./Telefonia";
+
+export type RemisorXML = {
+  Nombre: Array<string>;
+  Identificacion: Array<IdentificacionXML>;
+  NombreComercial: Array<string>;
+  Ubicacion: Array<UbicacionXML>;
+  Telefono: Array<TelefoniaXML>;
+  Fax: Array<TelefoniaXML>;
+  CorreoElectronico: Array<string>;
+};
 
 /**
  * Nombre:        Emisor o Receptor del comprobante
@@ -16,7 +27,7 @@ export abstract class Remisor {
    * Tamaño:        100
    * Descripcion:
    */
-  Nombre: string;
+  Nombre?: string;
 
   /**
    * Nombre:
@@ -24,7 +35,7 @@ export abstract class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo que contiene los datos de identificación
    */
-  Identificacion: Identificacion;
+  Identificacion?: Identificacion;
 
   /**
    * Nombre:        Nombre comercial
@@ -32,7 +43,7 @@ export abstract class Remisor {
    * Tamaño:        80
    * Descripcion:   En el caso que se cuente con nombre comercial debe indicarse. Es opcional
    */
-  NombreComercial: string;
+  NombreComercial?: string;
 
   /**
    * Nombre:
@@ -40,7 +51,7 @@ export abstract class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo que contiene el detalle de una ubicación
    */
-  Ubicacion: Ubicacion;
+  Ubicacion?: Ubicacion;
 
   /**
    * Nombre:
@@ -48,7 +59,7 @@ export abstract class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo para un número telefónico. Es opcional.
    */
-  Telefono: Telefono;
+  Telefono?: Telefono;
 
   /**
    * Nombre:
@@ -56,7 +67,7 @@ export abstract class Remisor {
    * Tamaño:
    * Descripcion:   Tipo complejo para un número de fax. Es opcional.
    */
-  Fax: Fax;
+  Fax?: Fax;
 
   /**
    * Nombre:        Dirección del correo electrónico.
@@ -64,16 +75,16 @@ export abstract class Remisor {
    * Tamaño:        160
    * Descripcion:   Debe cumplir con la siguiente estructura: ^\\s*(([^<>()\\[\\]\\.,;:\\s@\\\"]+(\\.[^<>()\\[\\]\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@(([^<>()\\[\\]\\.,;:\\s@\\\"]+\\.)+[^<>()\\[\\]\\.,;:\\s@\\\"]{0,})\\s*$
    */
-  CorreoElectronico: string;
+  CorreoElectronico?: string;
 
-  constructor(remisor) {
-    this.Identificacion = new Identificacion(remisor?.Identificacion?.[0]);
-    this.Fax = new Fax(remisor?.Fax?.[0]);
-    this.Telefono = new Telefono(remisor?.Telefono?.[0]);
-    this.Ubicacion = new Ubicacion(remisor?.Ubicacion?.[0]);
+  constructor(remisor: RemisorXML) {
+    this.Identificacion = new Identificacion(remisor.Identificacion?.[0]);
+    this.Fax = new Fax(remisor.Fax?.[0]);
+    this.Telefono = new Telefono(remisor.Telefono?.[0]);
+    this.Ubicacion = new Ubicacion(remisor.Ubicacion?.[0]);
 
     this.CorreoElectronico = remisor.CorreoElectronico?.[0];
     this.Nombre = remisor.Nombre?.[0];
-    this.NombreComercial = remisor?.NombreComercial?.[0];
+    this.NombreComercial = remisor.NombreComercial?.[0];
   }
 }

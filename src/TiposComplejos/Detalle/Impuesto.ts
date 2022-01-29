@@ -1,3 +1,15 @@
+import { Exoneracion, ExoneracionXML } from "./Exoneracion";
+
+export type ImpuestoXML = {
+  Codigo: Array<string>;
+  CodigoTarifa: Array<string>;
+  Tarifa: Array<string>;
+  FactorIVA: Array<string>;
+  Monto: Array<string>;
+  MontoExportacion: Array<string>;
+  Exoneracion: Array<ExoneracionXML>;
+};
+
 /**
  * Nombre:
  * Tipo:          ComplexType
@@ -16,7 +28,7 @@ export class Impuesto {
    *                Al utilizar el código 07 se debe de utilizar para el cálculo del impuesto el campo denominado “base imponible “ y la tarifa.
    *                Al utilizar el código 08, se debe utilizar para el cálculo de factor del IVA por el subtotal.
    */
-  Codigo: string;
+  Codigo?: string;
 
   /**
    * Nombre:        Código  de  la  tarifa  del impuesto
@@ -27,7 +39,7 @@ export class Impuesto {
    *                Se convierte en obligatorio para los Códigos 01, 07.
    *                El código debe coincidir con la tarifa asociada al producto (Según catálogo Cabys), En los casos en los que la ley o el reglamento establece que el receptor puede acreditarse una tarifa inferior a la establecida en el Cabys, esto sin necesidad de contar con el documento de exoneración emitido por el sistema EXONET, el emisor deberá indicar dicha tarifa reducida y no la indicada en el Cabys
    */
-  CodigoTarifa: string;
+  CodigoTarifa?: string;
 
   /**
    * Nombre:        Tarifa del impuesto
@@ -38,7 +50,7 @@ export class Impuesto {
    *                Debe de expresarse en porcentaje.
    *                Ver nota 8.1
    */
-  Tarifa: string;
+  Tarifa?: string;
 
   /**
    * Nombre:        Factor del impuesto
@@ -47,7 +59,7 @@ export class Impuesto {
    * Descripcion:   Este campo es de condición obligatoria, cuando el producto/servicio posea un factor para su cálculo.
    *                Cuando en el código de impuesto se defina IVA Bienes Usados se deberá utilizar este campo con el factor establecido por el Ministerio de Hacienda.
    */
-  FactorIVA: string;
+  FactorIVA?: string;
 
   /**
    * Nombre:        Monto del impuesto
@@ -59,7 +71,7 @@ export class Impuesto {
    *                c. En caso de utilizar el campo “Baseimponible”, este campo se obtiene de la multiplicación “Baseimponible” por la tarifa
    *                Es  un  número  decimal  compuesto  por  13  enteros  y  5 decimales.
    */
-  Monto: string;
+  Monto?: string;
 
   /**
    * Nombre:        Monto de impuesto de exportación.
@@ -67,7 +79,7 @@ export class Impuesto {
    * Tamaño:        18,5
    * Descripcion:   Uso exclusivo para exportación
    */
-  MontoExportacion: string;
+  MontoExportacion?: string;
 
   /**
    * Nombre:        Información de exoneración
@@ -76,16 +88,16 @@ export class Impuesto {
    * Descripcion:   Tipo complejo con detalles de la exoneración.
    *                Este campo será de condición obligatoria cuando la venta tenga alguna exoneración.
    */
-  Exoneracion: Exoneracion;
+  Exoneracion?: Exoneracion;
 
-  constructor(impuesto) {
-    if (impuesto === null) return;
-    this.Codigo = impuesto?.Codigo?.[0];
-    this.CodigoTarifa = impuesto?.CodigoTarifa?.[0];
-    this.Tarifa = impuesto?.Tarifa?.[0];
-    this.FactorIVA = impuesto?.FactorIVA?.[0];
-    this.Monto = impuesto?.Monto?.[0];
-    this.MontoExportacion = impuesto?.MontoExportacion?.[0];
-    this.Exoneracion = new Exoneracion(impuesto?.Exoneracion?.[0]);
+  constructor(impuesto: ImpuestoXML) {
+    if (!impuesto) return;
+    this.Codigo = impuesto.Codigo?.[0];
+    this.CodigoTarifa = impuesto.CodigoTarifa?.[0];
+    this.Tarifa = impuesto.Tarifa?.[0];
+    this.FactorIVA = impuesto.FactorIVA?.[0];
+    this.Monto = impuesto.Monto?.[0];
+    this.MontoExportacion = impuesto.MontoExportacion?.[0];
+    this.Exoneracion = new Exoneracion(impuesto.Exoneracion?.[0]);
   }
 }

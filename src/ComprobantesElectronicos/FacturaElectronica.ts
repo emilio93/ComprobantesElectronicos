@@ -1,12 +1,14 @@
-import { ComprobanteElectronico } from "../ComprobanteElectronico";
+// import {
+//   ComprobanteElectronico,
+//   ComprobanteXML,
+// } from "../ComprobanteElectronico";
 
-export class FacturaElectronica extends ComprobanteElectronico {
+// export class FacturaElectronica extends ComprobanteElectronico {
+//   constructor(parsedXml: ComprobanteXML) {
+//     super(parsedXml);
+//   }
 
-  constructor(parsedXml: Object) {
-    super(parsedXml);
-  }
-
-  validarCondicionCampos(): boolean {
-    return true;
-  }
-}
+//   validarCondicionCampos(): boolean {
+//     return true;
+//   }
+// }

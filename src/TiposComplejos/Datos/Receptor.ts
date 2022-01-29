@@ -1,4 +1,9 @@
-import { Remisor } from './Remisor';
+import { Remisor, RemisorXML } from "../../TiposComplejos/Datos/Remisor";
+
+export type ReceptorXML = RemisorXML & {
+  IdentificacionExtranjero: Array<string>;
+  OtrasSenasExtranjero: Array<string>;
+};
 
 /**
  * Nombre:        Receptor del comprobante
@@ -13,7 +18,7 @@ export class Receptor extends Remisor {
    * Tamaño:        20
    * Descripcion:   Este campo será  de condición obligatoria, cuando el cliente lo requiera
    */
-  IdentificacionExtranjero: string;
+  IdentificacionExtranjero?: string;
 
   /**
    * Nombre:        Otras señas Extranjero
@@ -21,10 +26,9 @@ export class Receptor extends Remisor {
    * Tamaño:        300
    * Descripcion:   Campo para incluir la dirección en el extranjero, en caso de requerirlo.
    */
-  OtrasSenasExtranjero: string;
+  OtrasSenasExtranjero?: string;
 
-  constructor(receptor) {
+  constructor(receptor: ReceptorXML) {
     super(receptor);
   }
-
 }

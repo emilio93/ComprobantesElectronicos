@@ -1,3 +1,11 @@
+export type InformacionReferenciaXML = {
+  TipoDoc: Array<string>;
+  Numero: Array<string>;
+  FechaEmision: Array<string>;
+  Codigo: Array<string>;
+  Razon: Array<string>;
+};
+
 // Las referencias se utilizarán para los siguientes casos:
 //  a) Nota de crédito que elimina un documento de referencia en forma completa.
 //  b) Nota de débito que elimina una nota de crédito en la referencia en forma completa.
@@ -20,7 +28,7 @@ export class InformacionReferencia {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver nota 10 y 7
    */
-  TipoDoc: string;
+  TipoDoc: string | undefined;
   // 10/ La codificación a utilizar en el campo “Tipo de documento de referencia” es la siguiente, sin embargo para efectos de impresión y visualización se debe mostrar la descripción del código:
   // Tipo de Documento Referencia                                                   Código
   // Factura electrónica                                                            01
@@ -42,14 +50,13 @@ export class InformacionReferencia {
   // Nota: * Dicho campo se puede utilizar en los comprobantes electrónicos únicamente cuando el servicio prestado vence el último día del mes, como por ejemplo servicios públicos, los cuales se facturan en los primeros días del mes, pero los ingresos pertenecen al mes anterior; En el campo “fecha de emisión del documento de referencia” del apartado de referencia de debe de indicar la fecha del periodo fiscal que correspondeel ingreso dela factura.
   // 7/ Para efectos de visualización e impresión se mostrará su descripción.
 
-
   /**
    * Nombre:        Clave numérica del comprobante electrónico o consecutivo del documento de referencia.
    * Tipo:          String
    * Tamaño:        50
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya  información  en  el  campo  “Tipo  de documento de referencia”, excepto cuando se utilice el código 13
    */
-  Numero: string;
+  Numero: string | undefined;
 
   /**
    * Nombre:        Fecha de emisión del documento de referencia.
@@ -57,7 +64,7 @@ export class InformacionReferencia {
    * Tamaño:
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya  información  en  el  campo  “Tipo  de documento de referencia”
    */
-  FechaEmision: string;
+  FechaEmision: string | undefined;
 
   /**
    * Nombre:        Código de referencia
@@ -66,7 +73,7 @@ export class InformacionReferencia {
    * Descripcion:   Es un campo fijo de dos posiciones
    *                Ver nota 9 y 7 Este campo será de condición obligatoria, cuando se incluya información en el campo “Tipo de documento de referencia”, excepto cuando se utilice el código 13
    */
-  Codigo: string;
+  Codigo: string | undefined;
   // 9/ Los códigos de referencia a utilizar son:
   // Descripción del campo                               Código
   // Anula Documento de Referencia                       01
@@ -76,21 +83,20 @@ export class InformacionReferencia {
   // Otros                                               99
   // 7/ Para efectos de visualización e impresión se mostrará su descripción.
 
-
   /**
    * Nombre:        Razón de referencia
    * Tipo:          String
    * Tamaño:        180
    * Descripcion:   Este campo será de condición obligatoria, cuando se incluya  información  en  el  campo  “Tipo  de documento de referencia” excepto cuando se utilice el código 13
    */
-  Razon: string;
+  Razon: string | undefined;
 
-  constructor(informacionReferencia) {
-    if (informacionReferencia === null) return;
-    this.TipoDoc = informacionReferencia?.TipoDoc?.[0];
-    this.Numero = informacionReferencia?.Numero?.[0];
-    this.FechaEmision = informacionReferencia?.FechaEmision?.[0];
-    this.Codigo = informacionReferencia?.Codigo?.[0];
-    this.Razon = informacionReferencia?.Razon?.[0];
+  constructor(informacionReferencia: InformacionReferenciaXML) {
+    if (!informacionReferencia) return;
+    this.TipoDoc = informacionReferencia.TipoDoc?.[0];
+    this.Numero = informacionReferencia.Numero?.[0];
+    this.FechaEmision = informacionReferencia.FechaEmision?.[0];
+    this.Codigo = informacionReferencia.Codigo?.[0];
+    this.Razon = informacionReferencia.Razon?.[0];
   }
 }

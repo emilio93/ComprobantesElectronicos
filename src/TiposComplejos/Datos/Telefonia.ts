@@ -1,3 +1,8 @@
+export type TelefoniaXML = {
+  CodigoPais: Array<number>;
+  NumTelefono: Array<number>;
+};
+
 /**
  * Nombre:
  * Tipo:          ComplexType
@@ -11,18 +16,18 @@ export class Telefonia {
    * Tamaño:        3
    * Descripcion:   En el caso que se cuente con un número de teléfono debe indicarse.
    */
-  CodigoPais: number;
+  CodigoPais?: number;
 
   /**
- * Nombre:        Número telefónico
- * Tipo:          Integer
- * Tamaño:        20
- * Descripcion:   En el caso que se cuente con un número de teléfono debe indicarse.
- */
-  NumTelefono: number;
+   * Nombre:        Número telefónico
+   * Tipo:          Integer
+   * Tamaño:        20
+   * Descripcion:   En el caso que se cuente con un número de teléfono debe indicarse.
+   */
+  NumTelefono?: number;
 
-  constructor(telefonia) {
-    if (telefonia === null) return;
+  constructor(telefonia: TelefoniaXML) {
+    if (!telefonia) return;
     this.CodigoPais = telefonia?.CodigoPais?.[0];
     this.NumTelefono = telefonia?.NumTelefono?.[0];
   }

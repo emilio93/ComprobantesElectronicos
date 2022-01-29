@@ -1,3 +1,8 @@
+export type IdentificacionXML = {
+  Tipo: Array<string>;
+  Numero: Array<string>;
+};
+
 /**
  * Nombre:
  * Tipo:          ComplexType
@@ -5,7 +10,6 @@
  * Descripcion:   Tipo complejo que contiene los datos de identificación de un emisor o receptor
  */
 export class Identificacion {
-
   /**
    * Nombre:        Tipo de identificación
    * Tipo:          String
@@ -13,7 +17,7 @@ export class Identificacion {
    * Descripcion:   Es un campo fijo de dos posiciones.Este campo será  de condición obligatoria, cuando se posea información en el nodo “Número de cédula física/ jurídica/NITE/DIMEX receptor
    *                Ver nota 4
    */
-  Tipo: string;
+  Tipo?: string;
 
   /**
    * Nombre:        Número de cédula física/ jurídica/NITE/DIMEX del receptor
@@ -26,10 +30,10 @@ export class Identificacion {
    *                  El  “Documento de Identificación Migratorio para Extranjeros (DIMEX)” debe contener 11 o 12 dígitos, sin ceros al inicio y sin guiones
    *                  El  “Documento de Identificación de la DGT  (NITE)” debe contener 10 dígitos y sin guiones.
    */
-  Numero: string;
+  Numero?: string;
 
-  constructor(identificacion) {
-    if (identificacion === null) return;
+  constructor(identificacion: IdentificacionXML) {
+    if (!identificacion) return;
     this.Numero = identificacion.Numero?.[0];
     this.Tipo = identificacion.Tipo?.[0];
   }

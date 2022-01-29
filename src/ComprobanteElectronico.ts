@@ -1,33 +1,38 @@
 import { readFile } from "fs/promises";
 
+import { Parser } from "xml2js";
 
-import { Emisor } from './TiposComplejos/Datos/Emisor';
-import { Receptor } from './TiposComplejos/Datos/Receptor';
+import { Emisor } from "./TiposComplejos/Datos/Emisor";
+import { Receptor } from "./TiposComplejos/Datos/Receptor";
+import { DetalleServicio } from "./TiposComplejos/Detalle/DetalleServicio";
+import { ResumenFactura } from "./TiposComplejos/Resumen/ResumenFactura";
+import { OtrosCargos } from "./TiposComplejos/Detalle/OtrosCargos";
+import { InformacionReferencia } from "./TiposComplejos/Referencia/InformacionReferencia";
+import { ComprobanteElectronicoFactory } from "./ComprobantesElectronicos/ComprobanteElectronicoFactory";
 
-import { DetalleServicio } from './TiposComplejos/Detalle/DetalleServicio';
-import { ResumenFactura } from './TiposComplejos/Resumen/ResumenFactura'
-import { OtrosCargos } from './TiposComplejos/Detalle/OtrosCargos'
-
-import { InformacionReferencia } from './TiposComplejos/Referencia/InformacionReferencia'
-
-import { Parser } from 'xml2js';
-import { ComprobanteElectronicoFactory } from './ComprobantesElectronicos/ComprobanteElectronicoFactory';
+export type ComprobanteXML = {
+  Datos: Datos;
+  Detalle: Detalle;
+  Referencia: Referencia;
+  Resumen: Resumen;
+};
 
 export abstract class ComprobanteElectronico {
-
   Datos: Datos;
   Detalle: Detalle;
   Referencia: Referencia;
   Resumen: Resumen;
 
-  constructor(comprobante) {
+  constructor(comprobante: ComprobanteXML) {
     this.Datos = new Datos(comprobante);
     this.Detalle = new Detalle(comprobante);
     this.Resumen = new Resumen(comprobante);
     this.Referencia = new Referencia(comprobante);
   }
 
-  static async parseXmlString(xmlString) : Promise<ComprobanteElectronico> {
+  static async parseXmlString(
+    xmlString: string
+  ): Promise<ComprobanteElectronico | null> {
     let parser = new Parser();
     let parsedXml;
     try {
@@ -41,7 +46,9 @@ export abstract class ComprobanteElectronico {
     return Comprobante;
   }
 
-  static async parseXmlFile(xmlFile) : Promise<ComprobanteElectronico> {
+  static async parseXmlFile(
+    xmlFile: string
+  ): Promise<ComprobanteElectronico | null> {
     const xml = await readFile(xmlFile);
     const xmlString = xml.toString();
     const fe = await ComprobanteElectronico.parseXmlString(xmlString);
@@ -154,19 +161,18 @@ export class Datos {
    */
   MedioPago: string;
 
+  constructor(comprobante: any) {
+    this.Emisor = new Emisor(comprobante.Emisor?.[0]);
+    this.Receptor = new Receptor(comprobante.Receptor?.[0]);
 
-  constructor(comprobante) {
-    this.Emisor = new Emisor(comprobante.Emisor[0]);
-    this.Receptor = new Receptor(comprobante.Receptor[0])
+    this.Clave = comprobante.Clave?.[0];
+    this.CodigoActividad = comprobante.CodigoActividad?.[0];
+    this.CondicionVenta = comprobante.CondicionVenta?.[0];
 
-    this.Clave = comprobante.Clave[0];
-    this.CodigoActividad = comprobante.CodigoActividad[0];
-    this.CondicionVenta = comprobante.CondicionVenta[0];
-
-    this.FechaEmision = comprobante.FechaEmision[0];
-    this.MedioPago = comprobante.MedioPago[0];
-    this.NumeroConsecutivo = comprobante.NumeroConsecutivo[0];
-    this.PlazoCredito = comprobante.PlazoCredito[0];
+    this.FechaEmision = comprobante.FechaEmision?.[0];
+    this.MedioPago = comprobante.MedioPago?.[0];
+    this.NumeroConsecutivo = comprobante.NumeroConsecutivo?.[0];
+    this.PlazoCredito = comprobante.PlazoCredito?.[0];
   }
 }
 
@@ -190,8 +196,10 @@ export class Detalle {
    */
   OtrosCargos: OtrosCargos;
 
-  constructor(comprobante) {
-    this.DetalleServicio = new DetalleServicio(comprobante?.DetalleServicio?.[0]);
+  constructor(comprobante: any) {
+    this.DetalleServicio = new DetalleServicio(
+      comprobante?.DetalleServicio?.[0]
+    );
     this.OtrosCargos = new OtrosCargos(comprobante?.OtrosCargos?.[0]);
   }
 }
@@ -207,7 +215,7 @@ export class Resumen {
    */
   ResumenFactura: ResumenFactura;
 
-  constructor(comprobante) {
+  constructor(comprobante: any) {
     this.ResumenFactura = new ResumenFactura(comprobante?.ResumenFactura?.[0]);
   }
 }
@@ -216,15 +224,17 @@ export class Resumen {
 //      Se deben detallar la razón y/o los documentos de referencia, por ejemplo se debe identificar la factura que se está modificando con una nota de crédito o de débito; y en el caso de comprobantes electrónicos que sustituyen comprobantes físicos emitidos por contingencia, se debe hacer referencia al comprobante provisional.
 export class Referencia {
   /**
- * Nombre:        Información de Referencia
- * Tipo:          ComplexType
- * Tamaño:
- * Descripcion:   Tipo complejo que representa el detalle de la referencia.
- */
+   * Nombre:        Información de Referencia
+   * Tipo:          ComplexType
+   * Tamaño:
+   * Descripcion:   Tipo complejo que representa el detalle de la referencia.
+   */
   InformacionReferencia: InformacionReferencia;
 
-  constructor(comprobante) {
-    this.InformacionReferencia = new InformacionReferencia(comprobante?.InformacionReferencia?.[0]);
+  constructor(comprobante: any) {
+    this.InformacionReferencia = new InformacionReferencia(
+      comprobante?.InformacionReferencia?.[0]
+    );
   }
 }
 
@@ -239,7 +249,7 @@ export class Otros {
    */
   Otros: Otros;
 
-  constructor(comprobante) {
+  constructor(comprobante: any) {
     this.Otros = new Otros(comprobante?.InformacionReferencia?.[0]);
   }
 }
@@ -247,7 +257,14 @@ export class Otros {
 // f)Mecanismo de seguridad:
 //      En esta sección se debe incluir la firma digital o el método de seguridad emitido por el Ministerio de Hacienda sobre todo el documento, para garantizar la integridad del mismo.
 // Nota:Solamente se permite el uso de un mecanismo de seguridad a la vez, no obstante si el obligado tributario por su giro comercial decide pasarse de un método de seguridad a otro puede hacerlo. El formato para los documentos electrónicos es único, así como en su forma electrónica o impresa, lo que los diferencia es la obligatoriedad de los campos según el tipo de documento. Adicionalmente, este documento contempla el formato de los archivos XML de confirmación (aceptación y rechazo) de los comprobantes electrónicos.
-export class Seguridad {
-}
+export class Seguridad {}
 
-export { FacturaElectronica } from "./ComprobantesElectronicos/FacturaElectronica";
+export class FacturaElectronica extends ComprobanteElectronico {
+  constructor(parsedXml: ComprobanteXML) {
+    super(parsedXml);
+  }
+
+  validarCondicionCampos(): boolean {
+    return true;
+  }
+}

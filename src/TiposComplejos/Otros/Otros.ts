@@ -1,3 +1,8 @@
+export type OtrosXML = {
+  OtroTexto: Array<string>;
+  OtroContenido: Array<string>;
+};
+
 // Las referencias se utilizarán para los siguientes casos:
 //  a)Nota de crédito que elimina un documento de referencia en forma completa.
 //  b)Nota de débito que elimina una nota de crédito en la referencia en forma completa.
@@ -19,7 +24,7 @@ export class Otros {
    * Tamaño:        inf
    * Descripcion:   Elemento opcional que se puede utilizar para almacenar texto.
    */
-  OtroTexto: string;
+  OtroTexto: string | undefined;
 
   /**
    * Nombre:        Otro Contenido
@@ -27,11 +32,11 @@ export class Otros {
    * Tamaño:        inf
    * Descripcion:   Elemento opcional que se puede utilizar para almacenar contenido estructurado.
    */
-  OtroContenido: string;
+  OtroContenido: string | undefined;
 
-  constructor(otros) {
-    if (otros === null) return;
-    this.OtroTexto = otros?.OtroTexto?.[0];
-    this.OtroContenido = otros?.OtroContenido?.[0];
+  constructor(otros: OtrosXML) {
+    if (!otros) return;
+    this.OtroTexto = otros.OtroTexto?.[0];
+    this.OtroContenido = otros.OtroContenido?.[0];
   }
 }

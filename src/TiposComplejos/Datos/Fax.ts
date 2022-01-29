@@ -1,4 +1,4 @@
-import { Telefonia } from './Telefonia'
+import { Telefonia, TelefoniaXML } from "./Telefonia";
 
 /**
  * Nombre:
@@ -7,7 +7,7 @@ import { Telefonia } from './Telefonia'
  * Descripcion:   Tipo complejo para un número de fax. Es opcional.
  */
 export class Fax extends Telefonia {
-  constructor(fax) {
+  constructor(fax: TelefoniaXML) {
     super(fax);
   }
 }

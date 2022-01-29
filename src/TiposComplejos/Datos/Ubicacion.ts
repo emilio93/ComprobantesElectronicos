@@ -1,3 +1,11 @@
+export type UbicacionXML = {
+  Provincia: Array<string>;
+  Canton: Array<string>;
+  Distrito: Array<string>;
+  Barrio: Array<string>;
+  OtrasSenas: Array<string>;
+};
+
 /**
  * Nombre:
  * Tipo:          ComplexType
@@ -11,7 +19,7 @@ export class Ubicacion {
    * Tamaño:        1
    * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
    */
-  Provincia: string;
+  Provincia?: string;
 
   /**
    * Nombre:        Canton
@@ -19,7 +27,7 @@ export class Ubicacion {
    * Tamaño:        2
    * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
    */
-  Canton: string;
+  Canton?: string;
 
   /**
    * Nombre:        Distrito
@@ -27,7 +35,7 @@ export class Ubicacion {
    * Tamaño:        2
    * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
    */
-  Distrito: string;
+  Distrito?: string;
 
   /**
    * Nombre:        Barrio
@@ -35,7 +43,7 @@ export class Ubicacion {
    * Tamaño:        2
    * Descripcion:   Ver nota 14 y 7. Únicamente permite números.
    */
-  Barrio: string;
+  Barrio?: string;
 
   /**
    * Nombre:        Otras Señas
@@ -43,14 +51,14 @@ export class Ubicacion {
    * Tamaño:        250
    * Descripcion:   Debe de indicarse lo másexacta posible.
    */
-  OtrasSenas: string;
+  OtrasSenas?: string;
 
-  constructor(ubicacion) {
-    if (ubicacion === null) return;
-    this.Barrio = ubicacion?.Barrio?.[0];
-    this.Canton = ubicacion?.Canton?.[0];
-    this.Distrito = ubicacion?.Distrito?.[0];
-    this.OtrasSenas = ubicacion?.OtrasSenas?.[0];
-    this.Provincia = ubicacion?.Provincia?.[0];
+  constructor(ubicacion: UbicacionXML) {
+    if (!ubicacion) return;
+    this.Barrio = ubicacion.Barrio?.[0];
+    this.Canton = ubicacion.Canton?.[0];
+    this.Distrito = ubicacion.Distrito?.[0];
+    this.OtrasSenas = ubicacion.OtrasSenas?.[0];
+    this.Provincia = ubicacion.Provincia?.[0];
   }
 }
